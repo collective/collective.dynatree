@@ -1,0 +1,39 @@
+from setuptools import setup, find_packages
+import os
+
+version = "1.0"
+shortdesc = 'Dynatree (JQuery Javascript) integration for Plone'
+longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
+
+setup(name='collective.dynatree',
+      version=version,
+      description=shortdesc,
+      long_description=longdesc,
+      classifiers=[
+          "Environment :: Web Environment",
+          "Framework :: Plone",
+          "Framework :: Zope2",
+          "License :: OSI Approved :: GNU General Public License (GPL)",
+          "Operating System :: OS Independent",
+          "Programming Language :: Python",
+      ],
+      keywords='jquery dynatree Zope Plone Archetypes Widget tree vocabulary',
+      author='Jens W. Klein, Peter Holzer, et al.',
+      author_email='dev@bluedynamics.com',
+      url=u'',
+      license='GNU General Public Licence',
+      packages=find_packages('src'),
+      package_dir = {'': 'src'},
+      namespace_packages=['collective'],
+      include_package_data=True,
+      zip_safe=False,
+      install_requires=[
+          'setuptools',
+          'collective.js.jqueryui',
+          'z3c.json',          
+      ],
+      entry_points="""
+      [z3c.autoinclude.plugin]
+      target = plone
+      """      
+)

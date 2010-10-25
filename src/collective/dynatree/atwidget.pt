@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+  <head><title></title></head>
+  <body>
+
+    <metal:macro define-macro="view">
+        <metal:use use-macro="context/at_widget_dynatree/macros/edit" />
+    </metal:view_macro>
+
+
+	<metal:macro define-macro="edit"
+	              widget nocall:widget|view/widget;
+	              portal nocall:portal|view/portal;
+	              mode nocall:mode|string:edit;
+	              errors nocall:errors|view/errors;
+	              immed_id view/brain/id|context/id;
+	              context_url view/context_url|context/absolute_url;
+	              baseid string:${fieldName}_${immed_id};"
+	>
+
+	  <div tal:attributes="id string:$baseid" 
+	       class="dynatree-atwidget">
+	    <div>
+	        <ul class="collective-dynatree-atwidget">
+	        </ul>
+	        <div style="clear:both;"> </div>
+	    </div>
+	    <div style="display: none">
+	        <span class="dynatree_fieldName"  tal:attributes="id fieldName" />
+	        <input type="hidden" 
+			       tal:attributes="id string:${baseid}_fieldName;value fieldName" />
+			<input type="hidden" 
+			       class="dynatree_ajax_vocabulary" 
+				   tal:attributes="id string:${baseid}_dynatree_vocabulary;
+	 			                   value string:${context/absolute_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
+	 		<input type="hidden" 
+			       class="dynatree_parameters" 
+				   tal:attributes="id string:${baseid}_dnyatree_parameters;
+	                               value string: ${widget/dynatreeParameter}" />
+	    </div>
+	  </div>
+	</metal:macro>
+	
+
+    <div metal:define-macro="search">
+      <div metal:use-macro="context/widgets/string/macros/edit">
+      </div>
+    </div>e>
+  </body>
+
+</html>

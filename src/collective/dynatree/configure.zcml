@@ -1,0 +1,33 @@
+<configure
+ xmlns="http://namespaces.zope.org/zope"
+ xmlns:five="http://namespaces.zope.org/five"
+ xmlns:cmf="http://namespaces.zope.org/cmf"
+ xmlns:i18n="http://namespaces.zope.org/i18n"
+ xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+ i18n_domain="collective.dynatree">
+
+    <include package="collective.js.jqueryui"/>
+
+    <genericsetup:registerProfile
+     name="default"
+     title="jquery.dynatree Plone Integration"
+     directory="profile"
+     description="provides dynatree js and archetypes widget"
+     provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <browser:page
+     for="Products.Archetypes.interfaces.IBaseObject"
+     name="at_widget_inlinetree"
+     template="inlinetree.pt"
+     permission="zope2.View"
+    />
+	
+    <browser:page
+     for="Products.Archetypes.interfaces.IBaseObject"
+     name="at_widget_dynatree_json"
+     permission="zope2.View"
+     class=".atwidget.ATFieldVocabDynatreeJsonView"
+     />	
+
+</configure>

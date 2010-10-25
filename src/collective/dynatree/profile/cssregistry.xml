@@ -1,0 +1,6 @@
+<object name="portal_css" meta_type="Stylesheets Registry" autogroup="False">
+    <stylesheet title="" cacheable="True" compression="safe" cookable="True" enabled="1" expression=""
+	id="ui.dynatree.css" media="screen" rel="stylesheet" rendering="import"/>
+	    <stylesheet title="" cacheable="True" compression="safe" cookable="True" enabled="1" expression=""
+	id="slc_treewidget.css" media="screen" rel="stylesheet" rendering="import"/>
+</object>
