@@ -1,12 +1,13 @@
 <configure
  xmlns="http://namespaces.zope.org/zope"
- xmlns:five="http://namespaces.zope.org/five"
- xmlns:cmf="http://namespaces.zope.org/cmf"
+ xmlns:browser="http://namespaces.zope.org/browser"
  xmlns:i18n="http://namespaces.zope.org/i18n"
  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
  i18n_domain="collective.dynatree">
 
-    <include package="collective.js.jqueryui"/>
+    <include package="collective.js.jqueryui" />
+	
+	<include package=".example" /> 
 
     <genericsetup:registerProfile
      name="default"
@@ -19,7 +20,7 @@
     <browser:page
      for="Products.Archetypes.interfaces.IBaseObject"
      name="at_widget_inlinetree"
-     template="inlinetree.pt"
+     template="atwidget.pt"
      permission="zope2.View"
     />
 	

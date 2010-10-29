@@ -1,6 +1,5 @@
 from Products.Archetypes.atapi import *
 from Products.Archetypes.config import PKG_NAME
-from Products.CMFCore.permissions import setDefaultRoles
 from AccessControl import ClassSecurityInfo
 from collective.dynatree.atwidget import DynatreeWidget
 
@@ -40,8 +39,8 @@ schema = BaseSchema + Schema((
 ))
 
 
-class DynatreeWidget(BaseContent):
+class DynatreeExample(BaseContent):
     """A simple archetype"""
     schema = schema
 
-registerType(SimpleType, PKG_NAME)
+registerType(DynatreeExample, 'collective.dynatree.example')

@@ -29,6 +29,7 @@ setup(name='collective.dynatree',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'Plone',
           'collective.js.jqueryui',
           'z3c.json',          
       ],

@@ -1,6 +1,6 @@
 from z3c.json.converter import JSONWriter
 from Products.Five.browser import BrowserView
-from Products.Archetypes import TypesWidget
+from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
