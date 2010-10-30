@@ -5,3 +5,8 @@ develop-eggs/
 parts/
 src/*.egg-info
 *.pyc
+.project
+.installed.cfg
+.pydevproject
+.tmp*
+
