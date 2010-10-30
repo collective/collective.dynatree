@@ -5,7 +5,7 @@
  <property name="description">A dynatree archetype</property>
  <property name="content_icon">document_icon.gif</property>
  <property name="content_meta_type">DynatreeExample</property>
- <property name="product">Archetypes</property>
+ <property name="product">collective.dynatree.example</property>
  <property name="factory">addDynatreeExample</property>
  <property name="immediate_view">base_edit</property>
  <property name="global_allow">True</property>

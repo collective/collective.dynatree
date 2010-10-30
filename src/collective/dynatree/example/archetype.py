@@ -42,5 +42,9 @@ schema = BaseSchema + Schema((
 class DynatreeExample(BaseContent):
     """A simple archetype"""
     schema = schema
+    security = ClassSecurityInfo()
+    meta_type = 'DynatreeExample'
+
+
 
 registerType(DynatreeExample, 'collective.dynatree.example')

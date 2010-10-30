@@ -5,6 +5,16 @@ from Products.Archetypes.Registry import registerWidget
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 
+
+class DynatreeWidgetMacros(BrowserView):
+    """
+    A little view class just for ajax calls
+    """
+    @property
+    def macros(self):
+        return self.index.macros
+
+
 class ATFieldVocabDynatreeJsonView(BrowserView):
     
     def __call__(self):

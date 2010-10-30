@@ -19,9 +19,10 @@
 
     <browser:page
      for="Products.Archetypes.interfaces.IBaseObject"
-     name="at_widget_inlinetree"
+     name="at_widget_dynatree"
      template="atwidget.pt"
      permission="zope2.View"
+     class=".atwidget.DynatreeWidgetMacros"
     />
 	
     <browser:page
