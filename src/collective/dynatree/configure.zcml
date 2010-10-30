@@ -31,5 +31,13 @@
      permission="zope2.View"
      class=".atwidget.ATFieldVocabDynatreeJsonView"
      />	
+	 
+    <browser:resourceDirectory name="jquery.dynatree"
+     directory="jquery.dynatree" 
+    />   
+
+    <browser:resourceDirectory name="collective.dynatree"
+     directory="js" 
+    />   
 
 </configure>
