@@ -8,19 +8,20 @@
 
     <metal:macro define-macro="view">
         <metal:use use-macro="context/at_widget_dynatree/macros/edit" />
-    </metal:view_macro>
+    </metal:macro>
 
 
 	<metal:macro define-macro="edit"
-	              widget nocall:widget|view/widget;
-	              portal nocall:portal|view/portal;
-	              mode nocall:mode|string:edit;
-	              errors nocall:errors|view/errors;
-	              immed_id view/brain/id|context/id;
-	              context_url view/context_url|context/absolute_url;
-	              baseid string:${fieldName}_${immed_id};"
-	>
-
+	    tal:define="field field|view/field;
+        widget nocall:widget|view/widget;
+        portal nocall:portal|view/portal;
+        mode nocall:mode|string:edit;
+        errors nocall:errors|view/errors;
+        immed_id view/brain/id|context/id;
+        context_url view/context_url|context/absolute_url;
+        baseid string:${fieldName}_${immed_id};"
+    >
+      <metal:use metal:use-macro="field_macro | context/widgets/field/macros/edit" />
 	  <div tal:attributes="id string:$baseid" 
 	       class="dynatree-atwidget">
 	    <div>
@@ -38,17 +39,17 @@
 	 			                   value string:${context/absolute_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
 	 		<input type="hidden" 
 			       class="dynatree_parameters" 
-				   tal:attributes="id string:${baseid}_dnyatree_parameters;
-	                               value string: ${widget/dynatreeParameter}" />
+				   tal:attributes="id string:${baseid}_dynatree_parameters;
+	                               value string: ${widget/dynatreeParameters}" />
 	    </div>
 	  </div>
 	</metal:macro>
 	
 
-    <div metal:define-macro="search">
+    <metal:macro metal:define-macro="search">
       <div metal:use-macro="context/widgets/string/macros/edit">
       </div>
-    </div>e>
+    </metal:macro>
   </body>
 
 </html>
