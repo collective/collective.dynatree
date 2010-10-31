@@ -21,7 +21,7 @@ schema = BaseSchema + Schema((
                            Autocollapse is switched on.""",
             multiple=False,
             select='all',
-            autocollapse=True),
+            autoCollapse=True),
     ),
     LinesField('multiple_leafs',
         required=0,

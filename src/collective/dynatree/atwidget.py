@@ -29,22 +29,25 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
             for key in vocab:
                 tree[key] = vocab.getValue(key)
         selected = []
+        if tree is None:
+            import pdb;pdb.set_trace()
         return JSONWriter().write(dict2dynatree(tree, selected))
     
 class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
     _properties.update({'macro' : 'at_widget_dynatree',
-                        'select': 'leafs', # 'leafs' or 'all'
-                        'minExpandLevel': 1,
-                        'rootvisible': False,
-                        'autocollapse': False})
+                        'selectMode': 1, # 1=single, 2=multi, 3=multi-hier                        'minExpandLevel': 1,
+                        'rootVisible': False,
+                        'autoCollapse': False,
+                        'minExpandLevel': 0})
     
     security = ClassSecurityInfo()
     
     def dynatreeParameters(self):
-        result = [('%s,%s' % (_, self._properties[_])) 
-                  for _ in ['select', 'minExpandLevel', 'rootvisible', 
-                            'autocollapse']]        
+        import pdb;pdb.set_trace()
+        result = [('%s,%s' % (_, getattr(self, _))) 
+                  for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
+                            'autoCollapse']]        
         return ';'.join(result)
 
 registerWidget(DynatreeWidget,

@@ -3,9 +3,15 @@ jq(document).ready(function(){
 		// get parameters
 		var rawparams = jq(this).find('.dynatree_parameters').val().split(';');
 		var params = new Array();
-		for (var idx=0; idx<params.length; idx++) {
+		for (var idx=0; idx<rawparams.length; idx++) {
 			var pair = rawparams[idx].split(',');
-			params[pair[0].trim()] = pair[1].trim();
+			var value = pair[1].trim();
+            if (!isNaN(value)) {
+                value = parseInt(value);
+            };
+            if (value=='True') { value = true; };
+            if (value=='False') { value = false; };		
+			params[pair[0].trim()] = value;
 		}
 		
 		// get json url       
