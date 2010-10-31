@@ -7,9 +7,12 @@
   <body>
 
     <metal:macro define-macro="view">
-        <metal:use use-macro="context/at_widget_dynatree/macros/edit" />
+        <span metal:define-macro="string-field-view"
+            tal:attributes="id string:parent-fieldname-$fieldName">
+            <span metal:define-slot="inside" 
+                  tal:replace="accessor">string</span>
+        </span>
     </metal:macro>
-
 
 	<metal:macro define-macro="edit"
 	    tal:define="field field|view/field;
@@ -21,28 +24,27 @@
         context_url view/context_url|context/absolute_url;
         baseid string:${fieldName}_${immed_id};"
     >
-      <metal:use metal:use-macro="field_macro | context/widgets/field/macros/edit" />
-	  <div tal:attributes="id string:$baseid" 
-	       class="dynatree-atwidget">
-	    <div>
-	        <ul class="collective-dynatree-atwidget">
-	        </ul>
-	        <div style="clear:both;"> </div>
-	    </div>
-	    <div style="display: none">
-	        <span class="dynatree_fieldName"  tal:attributes="id fieldName" />
-	        <input type="hidden" 
-			       tal:attributes="id string:${baseid}_fieldName;value fieldName" />
-			<input type="hidden" 
-			       class="dynatree_ajax_vocabulary" 
-				   tal:attributes="id string:${baseid}_dynatree_vocabulary;
-	 			                   value string:${context/absolute_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
-	 		<input type="hidden" 
-			       class="dynatree_parameters" 
-				   tal:attributes="id string:${baseid}_dynatree_parameters;
-	                               value string: ${widget/dynatreeParameters}" />
-	    </div>
-	  </div>
+      <metal:use use-macro="field_macro | context/widgets/field/macros/edit" >    	
+	      <div metal:fill-slot="widget_body"
+		       tal:attributes="id string:$baseid" 
+		       class="dynatree-atwidget">
+		    <div class="collective-dynatree-tree">
+		    </div>
+		    <div style="display: none">
+		        <span class="dynatree_fieldName"  tal:attributes="id fieldName" />
+		        <input type="hidden" 
+				       tal:attributes="id string:${baseid}_fieldName;value fieldName" />
+				<input type="hidden" 
+				       class="dynatree_ajax_vocabulary" 
+					   tal:attributes="id string:${baseid}_dynatree_vocabulary;
+		 			                   value string:${context/absolute_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
+		 		<input type="hidden" 
+				       class="dynatree_parameters" 
+					   tal:attributes="id string:${baseid}_dynatree_parameters;
+		                               value string: ${widget/dynatreeParameters}" />
+		    </div>
+		  </div>
+	  </metal:use>
 	</metal:macro>
 	
 

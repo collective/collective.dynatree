@@ -1,18 +1,21 @@
 from Products.Archetypes.atapi import *
 from Products.Archetypes.config import PKG_NAME
 from AccessControl import ClassSecurityInfo
+from Products.ATVocabularyManager import NamedVocabulary
 from collective.dynatree.atwidget import DynatreeWidget
 
 schema = BaseSchema + Schema((
     StringField('single_leafs',
-        required=1,
+        required=0,
+        vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="Select one option of tree. Only leafs allowed",
             multiple=False,
             select='leafs'),
     ),
     StringField('single_all',
-        required=1,
+        required=0,
+        vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="""Select one option of tree. Nodes allowed too.
                            Autocollapse is switched on.""",
@@ -21,16 +24,18 @@ schema = BaseSchema + Schema((
             autocollapse=True),
     ),
     LinesField('multiple_leafs',
-        required=1,
+        required=0,
+        vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="""Select multiple options of tree. Leafs only.""",
             multiple=True,
             select="leafs"),
     ),
     LinesField('multiple_all',
-        required=1,
+        required=0,
+        vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
-            description="""Select one option of the tree. All selectable.
+            description="""Select multiple options of the tree. All selectable.
                            Starts with 2 levels expanded.""",
             multiple=True,
             select="all",

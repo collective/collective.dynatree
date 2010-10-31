@@ -33,6 +33,9 @@ setup(name='collective.dynatree',
           'collective.js.jqueryui',
           'z3c.json',          
       ],
+      extras_require = dict(
+          example=['Products.ATVocabularyManager'],
+      ),
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone

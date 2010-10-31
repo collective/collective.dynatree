@@ -6,8 +6,6 @@
  i18n_domain="collective.dynatree">
 
     <include package="collective.js.jqueryui" />
-	
-	<include package=".example" /> 
 
     <genericsetup:registerProfile
      name="default"
