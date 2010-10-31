@@ -36,7 +36,7 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
 class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
     _properties.update({'macro' : 'at_widget_dynatree',
-                        'selectMode': 1, # 1=single, 2=multi, 3=multi-hier                        'minExpandLevel': 1,
+                        'selectMode': 1, # 1=single, 2=multi, 3=multi-hier(?)                      'minExpandLevel': 1,
                         'rootVisible': False,
                         'autoCollapse': False,
                         'minExpandLevel': 0})
@@ -44,11 +44,11 @@ class DynatreeWidget(TypesWidget):
     security = ClassSecurityInfo()
     
     def dynatreeParameters(self):
-        import pdb;pdb.set_trace()
         result = [('%s,%s' % (_, getattr(self, _))) 
                   for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
-                            'autoCollapse']]        
-        return ';'.join(result)
+                            'autoCollapse']]
+        result.append('title,%s' % self.label)
+        return '/'.join(result)
 
 registerWidget(DynatreeWidget,
                title='Dynatree',

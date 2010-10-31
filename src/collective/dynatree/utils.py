@@ -14,6 +14,7 @@ def dict2dynatree(input_dict, selected):
         new_item['title'] = title
         new_item['key'] = key
         new_item['children'] = children
+        new_item['hideCheckbox'] = False        
         #new_item['expand'] = expanded
         retval.append(new_item)
     return retval

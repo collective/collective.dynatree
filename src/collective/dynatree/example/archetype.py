@@ -10,8 +10,7 @@ schema = BaseSchema + Schema((
         vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="Select one option of tree. Only leafs allowed",
-            multiple=False,
-            select='leafs'),
+            selectMode=1),
     ),
     StringField('single_all',
         required=0,
@@ -19,8 +18,8 @@ schema = BaseSchema + Schema((
         widget=DynatreeWidget(
             description="""Select one option of tree. Nodes allowed too.
                            Autocollapse is switched on.""",
-            multiple=False,
-            select='all',
+            selectMode=1,
+            rootVisible=True,
             autoCollapse=True),
     ),
     LinesField('multiple_leafs',
@@ -28,8 +27,7 @@ schema = BaseSchema + Schema((
         vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="""Select multiple options of tree. Leafs only.""",
-            multiple=True,
-            select="leafs"),
+            selectMode=2),
     ),
     LinesField('multiple_all',
         required=0,
@@ -37,8 +35,7 @@ schema = BaseSchema + Schema((
         widget=DynatreeWidget(
             description="""Select multiple options of the tree. All selectable.
                            Starts with 2 levels expanded.""",
-            multiple=True,
-            select="all",
+            selectMode=3,
             minExpandLevel=2),
     ),
 ))

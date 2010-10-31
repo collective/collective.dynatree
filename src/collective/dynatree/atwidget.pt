@@ -15,34 +15,29 @@
     </metal:macro>
 
 	<metal:macro define-macro="edit"
-	    tal:define="field field|view/field;
-        widget nocall:widget|view/widget;
-        portal nocall:portal|view/portal;
-        mode nocall:mode|string:edit;
-        errors nocall:errors|view/errors;
-        immed_id view/brain/id|context/id;
-        context_url view/context_url|context/absolute_url;
-        baseid string:${fieldName}_${immed_id};"
+ 	 		     tal:define="field field|view/field;
+ 		                     widget nocall:widget|view/widget;
+		                     mode nocall:mode|string:edit;
+		                     errors nocall:errors|view/errors;
+		                     context_url view/context_url|context/absolute_url;"
     >
       <metal:use use-macro="field_macro | context/widgets/field/macros/edit" >    	
-	      <div metal:fill-slot="widget_body"
-		       tal:attributes="id string:$baseid" 
+	      <div metal:fill-slot="widget_body" 
 		       class="dynatree-atwidget">
-		    <div class="collective-dynatree-tree">
-		    </div>
-		    <div style="display: none">
-		        <span class="dynatree_fieldName"  tal:attributes="id fieldName" />
-		        <input type="hidden" 
-				       tal:attributes="id string:${baseid}_fieldName;value fieldName" />
-				<input type="hidden" 
-				       class="dynatree_ajax_vocabulary" 
-					   tal:attributes="id string:${baseid}_dynatree_vocabulary;
-		 			                   value string:${context/absolute_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
-		 		<input type="hidden" 
-				       class="dynatree_parameters" 
-					   tal:attributes="id string:${baseid}_dynatree_parameters;
-		                               value string: ${widget/dynatreeParameters}" />
-		    </div>
+		    <div class="collective-dynatree-tree">TREE</div>
+			<div class="dynatree_ajax_vocabulary" 
+				 tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
+	 		<div class="dynatree_parameters" 
+				 tal:content="python:widget.dynatreeParameters()+'/checkbox,True'" />
+	        <input type="text"
+	               name=""
+	               id=""
+	               value=""
+				   size="120"
+	               tal:attributes="name fieldName;
+	                               id fieldName;
+	                               value value;"
+	               />
 		  </div>
 	  </metal:use>
 	</metal:macro>
