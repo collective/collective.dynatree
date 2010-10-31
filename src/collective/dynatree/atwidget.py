@@ -43,13 +43,30 @@ class DynatreeWidget(TypesWidget):
     
     security = ClassSecurityInfo()
     
+    security.declarePublic('dynatreeParameters')
     def dynatreeParameters(self):
         result = [('%s,%s' % (_, getattr(self, _))) 
                   for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
                             'autoCollapse']]
         result.append('title,%s' % self.label)
         return '/'.join(result)
-
+    
+    security.declarePublic('process_form')
+    def process_form(self, instance, field, form, empty_marker=None,
+                     emptyReturnsMarker=False, validating=True):
+        """get values from form field"""
+        value = form.get(field.getName(), empty_marker)
+        if value is empty_marker:
+            return empty_marker
+        if emptyReturnsMarker and value == '':
+            return empty_marker
+        if value == '()':
+            return empty_marker
+        value = value.strip("|")
+        if self.selectMode > 1:
+            value = value.split('|')
+        return value, {}
+    
 registerWidget(DynatreeWidget,
                title='Dynatree',
                description=('Renders a tree with selected items '

@@ -1,4 +1,4 @@
-jq(document).ready(function(){		
+jq(document).ready(function() {
     jq('.dynatree-atwidget').each(function () {
 		// get parameters
 		var jqthis = jq(this);
@@ -13,12 +13,10 @@ jq(document).ready(function(){
             if (value=='False') { value = false; };		
 			params[pair[0].trim()] = value;
 		}
-		
 		// get json url       
         params['initAjax'] = {
 			'url': jqthis.find('.dynatree_ajax_vocabulary').text()
 		};
-		
 		// activation/ deactivation
 		params['onSelect'] = function(flag, dtnode) {
 			var sel_nodes = jq(dtnode.tree.$tree).dynatree('getSelectedNodes');
@@ -28,7 +26,6 @@ jq(document).ready(function(){
 			};  
 			jq(dtnode.tree.$tree).siblings('input').val(newvalue);
 		};
-		
 		// init tree
 		jqthis.find('.collective-dynatree-tree').dynatree(params);
 	});
