@@ -28,10 +28,10 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
             tree = OrderedDict()
             for key in vocab:
                 tree[key] = vocab.getValue(key)
-        selected = []
-        if tree is None:
-            import pdb;pdb.set_trace()
-        return JSONWriter().write(dict2dynatree(tree, selected))
+        selected = field.get(self.context) or []
+        if isinstance(selected, basestring):
+            selected = [selected]
+        return JSONWriter().write(dict2dynatree(tree, selected, field.widget.leafsOnly))
     
 class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
@@ -40,6 +40,7 @@ class DynatreeWidget(TypesWidget):
                         'minExpandLevel': 1,
                         'rootVisible': False,
                         'autoCollapse': False,
+                        'leafsOnly': False,
                         'minExpandLevel': 0})
     
     security = ClassSecurityInfo()
