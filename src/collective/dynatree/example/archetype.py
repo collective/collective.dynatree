@@ -10,6 +10,7 @@ schema = BaseSchema + Schema((
         vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="Select one option of tree. Only leafs allowed",
+            leafsOnly=True,
             selectMode=1),
     ),
     StringField('single_all',
@@ -27,6 +28,7 @@ schema = BaseSchema + Schema((
         vocabulary=NamedVocabulary('ch.scb.disposition'),
         widget=DynatreeWidget(
             description="""Select multiple options of tree. Leafs only.""",
+            leafsOnly=True,
             selectMode=2),
     ),
     LinesField('multiple_all',

@@ -25,6 +25,7 @@
 	      <div metal:fill-slot="widget_body" 
 		       class="dynatree-atwidget">
 		    <div class="collective-dynatree-tree">TREE</div>
+			<div tal:content="python:field.widget.leafsOnly"></div>
 			<div class="dynatree_ajax_vocabulary" 
 				 tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
 	 		<div class="dynatree_parameters" 

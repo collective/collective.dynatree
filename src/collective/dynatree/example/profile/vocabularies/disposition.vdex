@@ -107,9 +107,9 @@
     <term>
         <termIdentifier>5.</termIdentifier>
         <caption>
-	        <langstring language="de">Notendruck/Editionspraxis</langstring>
-	        <langstring language="en">Notendruck/Editionspraxis</langstring>
-	        <langstring language="fr">Notendruck/Editionspraxis</langstring>
+	        <langstring language="de">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
+	        <langstring language="en">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
+	        <langstring language="fr">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
         </caption>
     </term>
 
@@ -294,9 +294,9 @@
 		    <term>
 		        <termIdentifier>8.5.</termIdentifier>
 		        <caption>
-			        <langstring language="de">Außereuropäische Musikwissenschaft </langstring>
-			        <langstring language="en">Außereuropäische Musikwissenschaft</langstring>
-			        <langstring language="fr">Außereuropäische Musikwissenschaft</langstring>
+			        <langstring language="de">Aussereuropäische Musikwissenschaft</langstring>
+			        <langstring language="en">Aussereuropäische Musikwissenschaft</langstring>
+			        <langstring language="fr">Aussereuropäische Musikwissenschaft</langstring>
 		        </caption>
 		    </term>
 
@@ -429,15 +429,6 @@
 				        </caption>
 				    </term>
 
-				    <term>
-				        <termIdentifier>9.3.6.</termIdentifier>
-				        <caption>
-					        <langstring language="de">Passion. Biblische Historie</langstring>
-					        <langstring language="en">Passion. Biblische Historie</langstring>
-					        <langstring language="fr">Passion. Biblische Historie</langstring>
-				        </caption>
-				    </term>
-
 		    </term>
 
 		    <term>
@@ -523,9 +514,9 @@
 				    <term>
 				        <termIdentifier>9.4.9.</termIdentifier>
 				        <caption>
-					        <langstring language="de">Suit</langstring>
-					        <langstring language="en">Suit</langstring>
-					        <langstring language="fr">Suit</langstring>
+					        <langstring language="de">Suite</langstring>
+					        <langstring language="en">Suite</langstring>
+					        <langstring language="fr">Suite</langstring>
 				        </caption>
 				    </term>
 
@@ -672,6 +663,24 @@
 		        </caption>
 		    </term>
 
+		    <term>
+		        <termIdentifier>11.6.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Gestik, Affekt</langstring>
+			        <langstring language="en">Gestik, Affekt</langstring>
+			        <langstring language="fr">Gestik, Affekt</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.7.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Artikulation</langstring>
+			        <langstring language="en">Artikulation</langstring>
+			        <langstring language="fr">Artikulation</langstring>
+		        </caption>
+		    </term>
+
     </term>
 
 
@@ -775,9 +784,9 @@
 		    <term>
 		        <termIdentifier>15.3.</termIdentifier>
 		        <caption>
-			        <langstring language="de">Musik fur einzelne Instrumente</langstring>
-			        <langstring language="en">Musik fur einzelne Instrumente</langstring>
-			        <langstring language="fr">Musik fur einzelne Instrumente</langstring>
+			        <langstring language="de">Musik für einzelne Instrumente</langstring>
+			        <langstring language="en">Musik für einzelne Instrumente</langstring>
+			        <langstring language="fr">Musik für einzelne Instrumente</langstring>
 		        </caption>
 		    </term>
 
@@ -847,9 +856,9 @@
 		    <term>
 		        <termIdentifier>19.3.</termIdentifier>
 		        <caption>
-			        <langstring language="de">Musik und Reprasentation</langstring>
-			        <langstring language="en">Musik und Reprasentation</langstring>
-			        <langstring language="fr">Musik und Reprasentation</langstring>
+			        <langstring language="de">Musik und Repräsentation</langstring>
+			        <langstring language="en">Musik und Repräsentation</langstring>
+			        <langstring language="fr">Musik und Repräsentation</langstring>
 		        </caption>
 		    </term>
 
@@ -878,9 +887,9 @@
     <term>
         <termIdentifier>20.</termIdentifier>
         <caption>
-	        <langstring language="de">Festschriften und Kongressberichte</langstring>
-	        <langstring language="en">Festschriften und Kongressberichte</langstring>
-	        <langstring language="fr">Festschriften und Kongressberichte</langstring>
+	        <langstring language="de">Festschriften / Kongressberichte</langstring>
+	        <langstring language="en">Festschriften / Kongressberichte</langstring>
+	        <langstring language="fr">Festschriften / Kongressberichte</langstring>
         </caption>
     </term>
 

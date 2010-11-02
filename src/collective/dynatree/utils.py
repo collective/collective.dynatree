@@ -19,7 +19,9 @@ def dict2dynatree(input_dict, selected, leafsOnly):
             new_item['select'] = True
         if children:
             new_item['isFolder'] = True
-        
+        if children and leafsOnly:
+            new_item['hideCheckbox'] = True
+
         #new_item['expand'] = expanded
         retval.append(new_item)
     return retval
