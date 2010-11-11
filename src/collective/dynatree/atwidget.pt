@@ -7,25 +7,19 @@
   <body>
 
     <metal:macro define-macro="view">
-        <span metal:define-macro="dynatree-field-view"
+        <div metal:define-macro="dynatree-field-view"
             tal:attributes="id string:parent-fieldname-$fieldName">
-            <span metal:define-slot="inside" 
-                  tal:replace="accessor">string</span>
-        </span>
 
-		<div tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'"></div>
-		<div tal:content="python:widget.dynatreeParameters(context, field)"></div>
+			<ul tal:define="isStringField python:isinstance(accessor(), basestring);">
+				<tal:isString tal:condition="isStringField">
+					<li><span tal:replace="accessor">string</span> <span tal:content="python:widget.vocabLookup(context, field, accessor())"></span></li>
+				</tal:isString>
+				<tal:isLines tal:condition="not:isStringField" repeat="item python:accessor()">
+					<li><span tal:replace="item">string</span> <span tal:content="python:widget.vocabLookup(context, field, item)"></span></li>
+				</tal:isLines>
+			</ul>
+        </div>
 
-		<ul tal:define="isStringField python:isinstance(accessor(), basestring);
-						">
-						
-			<tal:isString tal:condition="isStringField">
-				<li><span tal:replace="accessor">string</span> <span tal:content="python:widget.vocabLookup(context, field)[accessor()]"></span></li>
-			</tal:isString>
-			<tal:isLines tal:condition="not:isStringField" repeat="item python:accessor()">
-				<li tal:content="item">string</li>
-			</tal:isLines>
-		</ul>
     </metal:macro>
 
 	<metal:macro define-macro="edit"
