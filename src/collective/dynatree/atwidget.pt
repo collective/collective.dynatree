@@ -37,7 +37,7 @@
 				   size="120"
 	               tal:attributes="name fieldName;
 	                               id fieldName;
-	                               value value;"
+	                               value python:widget.dynatreeValue(value);"
 	               />
 		  </div>
 	  </metal:use>

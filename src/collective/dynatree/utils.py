@@ -27,6 +27,3 @@ def isSomethingSelectedInChildren(children, selected):
     return bool(set([_['key'] for _ in children]).intersection(selected)) \
         or bool([_ for _ in children
             if _['children'] and isSomethingSelectedInChildren(_['children'], selected)])
-        
-        
-# if isSomethingSelected in children level 1

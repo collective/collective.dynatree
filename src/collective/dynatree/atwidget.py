@@ -59,6 +59,14 @@ class DynatreeWidget(TypesWidget):
         result.append('title,%s' % self.label)
         return '/'.join(result)
     
+    security.declarePublic('dynatreeValue')
+    def dynatreeValue(self, value):
+        if isinstance(value, basestring):
+            return value
+        if isinstance(value, (tuple, list)):
+            return '|'.join(value)
+        return ''     
+    
     security.declarePublic('process_form')
     def process_form(self, instance, field, form, empty_marker=None,
                      emptyReturnsMarker=False, validating=True):
