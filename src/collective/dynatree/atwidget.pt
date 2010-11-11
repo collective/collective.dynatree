@@ -20,7 +20,7 @@
 						">
 						
 			<tal:isString tal:condition="isStringField">
-				<li><span tal:replace="accessor">string</span> <span tal:content="widget.vocabLookup(context, field)"></span></li>
+				<li><span tal:replace="accessor">string</span> <span tal:content="python:widget.vocabLookup(context, field)[accessor()]"></span></li>
 			</tal:isString>
 			<tal:isLines tal:condition="not:isStringField" repeat="item python:accessor()">
 				<li tal:content="item">string</li>
