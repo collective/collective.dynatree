@@ -31,7 +31,7 @@ def isSomethingSelectedInChildren(children, selected):
         or bool([_ for _ in children
             if _['children'] and isSomethingSelectedInChildren(_['children'], selected)])
         
-def lookupVocabulary(field, context):
+def lookupVocabulary(context, field):
     if IVocabulary.providedBy(field.vocabulary):
         return field.vocabulary.getVocabularyDict(context)
     else:

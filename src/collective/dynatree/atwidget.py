@@ -64,7 +64,7 @@ class DynatreeWidget(TypesWidget):
 
     security.declarePublic('vocabLookup')
     def vocabLookup(self, instance, field):
-        return lookupVocabulary(self, instance, field)
+        return lookupVocabulary(instance, field)
 
 
     
