@@ -63,11 +63,23 @@ class DynatreeWidget(TypesWidget):
         return ''     
 
     security.declarePublic('vocabLookup')
-    def vocabLookup(self, instance, field):
-        return lookupVocabulary(instance, field)
-
-
-    
+    def vocabLookup(self, instance, field, value):
+        tree = lookupVocabulary(instance, field)
+        def find(treepart):
+            if treepart is None:
+                return None
+            if value in treepart:
+                return treepart[value][0]
+            for key in treepart:
+                result = find(treepart)
+                if result is not None:
+                    return result
+            return None
+        result = find(tree)
+        if result is None:
+             return u'NOT FOUND'
+        return result
+        
     security.declarePublic('process_form')
     def process_form(self, instance, field, form, empty_marker=None,
                      emptyReturnsMarker=False, validating=True):
