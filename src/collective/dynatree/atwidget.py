@@ -61,6 +61,12 @@ class DynatreeWidget(TypesWidget):
         if isinstance(value, (tuple, list)):
             return '|'.join(value)
         return ''     
+
+    security.declarePublic('vocabLookup')
+    def vocabLookup(self, instance, field):
+        return lookupVocabulary(self, instance, field)
+
+
     
     security.declarePublic('process_form')
     def process_form(self, instance, field, form, empty_marker=None,

@@ -13,14 +13,17 @@
                   tal:replace="accessor">string</span>
         </span>
 
+		<div tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'"></div>
+		<div tal:content="python:widget.dynatreeParameters(context, field)"></div>
+
 		<ul tal:define="isStringField python:isinstance(accessor(), basestring);
 						">
 						
-			<tal:isString tal:condition="isStringField" repeat="item accessor">
-				<li>string</li>
+			<tal:isString tal:condition="isStringField">
+				<li><span tal:replace="accessor">string</span> <span tal:content="widget.vocabLookup(context, field)"></span></li>
 			</tal:isString>
-			<tal:isLines tal:condition="not:isStringField" repeat="item accessor">
-				<li>lines</li>
+			<tal:isLines tal:condition="not:isStringField" repeat="item python:accessor()">
+				<li tal:content="item">string</li>
 			</tal:isLines>
 		</ul>
     </metal:macro>
