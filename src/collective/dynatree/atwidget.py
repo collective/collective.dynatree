@@ -23,7 +23,7 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
     def __call__(self):
         fieldname = self.request.get('fieldname')
         field = self.context.Schema()[fieldname]
-        tree = lookupVocabulary(field, self.context)
+        tree = lookupVocabulary(self.context, field)
         selected = field.get(self.context) or []
         if isinstance(selected, basestring):
             selected = [selected]
