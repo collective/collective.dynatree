@@ -6,6 +6,7 @@ from Products.Archetypes.Registry import registerWidget
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 from utils import dict2dynatree
+from utils import isSomethingSelectedInChildren
 
 class DynatreeWidgetMacros(BrowserView):
     """
@@ -37,16 +38,21 @@ class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
     _properties.update({'macro' : 'at_widget_dynatree',
                         'selectMode': 1, # 1=single, 2=multi, 3=multi-hier(?)                      
-                        'minExpandLevel': 1,
+                        'minExpandLevel': 0,
                         'rootVisible': False,
                         'autoCollapse': False,
-                        'leafsOnly': False,
-                        'minExpandLevel': 0})
+                        'leafsOnly': False})
+
     
     security = ClassSecurityInfo()
     
     security.declarePublic('dynatreeParameters')
-    def dynatreeParameters(self):
+    def dynatreeParameters(self, instance, field):
+        if getattr(self, 'rootVisible') == True \
+               and getattr(self, 'minExpandLevel') == 0 \
+               and field.get(instance):
+            self.minExpandLevel = 1
+            
         result = [('%s,%s' % (_, getattr(self, _))) 
                   for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
                             'autoCollapse']]

@@ -29,7 +29,7 @@
 			<div class="dynatree_ajax_vocabulary" 
 				 tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
 	 		<div class="dynatree_parameters" 
-				 tal:content="python:widget.dynatreeParameters()+'/checkbox,True'" />
+				 tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'" />
 	        <input type="text"
 	               name=""
 	               id=""
