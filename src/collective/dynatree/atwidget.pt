@@ -7,11 +7,22 @@
   <body>
 
     <metal:macro define-macro="view">
-        <span metal:define-macro="string-field-view"
+        <span metal:define-macro="dynatree-field-view"
             tal:attributes="id string:parent-fieldname-$fieldName">
             <span metal:define-slot="inside" 
                   tal:replace="accessor">string</span>
         </span>
+
+		<ul tal:define="isStringField python:isinstance(accessor(), basestring);
+						">
+						
+			<tal:isString tal:condition="isStringField" repeat="item accessor">
+				<li>string</li>
+			</tal:isString>
+			<tal:isLines tal:condition="not:isStringField" repeat="item accessor">
+				<li>lines</li>
+			</tal:isLines>
+		</ul>
     </metal:macro>
 
 	<metal:macro define-macro="edit"

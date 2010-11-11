@@ -1,3 +1,6 @@
+from Products.Archetypes.interfaces import IVocabulary
+from Products.Archetypes.utils import OrderedDict
+
 def dict2dynatree(input_dict, selected, leafsOnly):
     """
     Recursively parse the dictionary as we get it from the
@@ -27,3 +30,13 @@ def isSomethingSelectedInChildren(children, selected):
     return bool(set([_['key'] for _ in children]).intersection(selected)) \
         or bool([_ for _ in children
             if _['children'] and isSomethingSelectedInChildren(_['children'], selected)])
+        
+def lookupVocabulary(field, context):
+    if IVocabulary.providedBy(field.vocabulary):
+        return field.vocabulary.getVocabularyDict(context)
+    else:
+        vocab = field.Vocabulary(context)
+        tree = OrderedDict()
+        for key in vocab:
+            tree[key] = vocab.getValue(key)
+        return tree

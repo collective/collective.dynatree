@@ -3,10 +3,11 @@ from AccessControl import ClassSecurityInfo
 from Products.Five.browser import BrowserView
 from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget
-from Products.Archetypes.interfaces import IVocabulary
-from Products.Archetypes.utils import OrderedDict
+#from Products.Archetypes.interfaces import IVocabulary
+#from Products.Archetypes.utils import OrderedDict
 from utils import dict2dynatree
 from utils import isSomethingSelectedInChildren
+from utils import lookupVocabulary
 
 class DynatreeWidgetMacros(BrowserView):
     """
@@ -22,13 +23,7 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
     def __call__(self):
         fieldname = self.request.get('fieldname')
         field = self.context.Schema()[fieldname]
-        if IVocabulary.providedBy(field.vocabulary):
-            tree = field.vocabulary.getVocabularyDict(self.context)
-        else:
-            vocab = field.Vocabulary(self.context)
-            tree = OrderedDict()
-            for key in vocab:
-                tree[key] = vocab.getValue(key)
+        tree = lookupVocabulary(field, self.context)
         selected = field.get(self.context) or []
         if isinstance(selected, basestring):
             selected = [selected]
