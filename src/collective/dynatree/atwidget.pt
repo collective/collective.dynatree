@@ -33,12 +33,12 @@
 	      <div metal:fill-slot="widget_body" 
 		       class="dynatree-atwidget">
 		    <div class="collective-dynatree-tree">TREE</div>
-			<div tal:content="python:field.widget.leafsOnly"></div>
-			<div class="dynatree_ajax_vocabulary" 
+
+			<div class="dynatree_ajax_vocabulary hiddenStructure" 
 				 tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
-	 		<div class="dynatree_parameters" 
+	 		<div class="dynatree_parameters hiddenStructure" 
 				 tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'" />
-	        <input type="text"
+	        <input type="hidden"
 	               name=""
 	               id=""
 	               value=""
