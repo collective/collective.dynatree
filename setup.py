@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 
 version = "1.0"
-shortdesc = 'Dynatree (JQuery Javascript) integration for Plone'
+shortdesc = 'jquery.dynatree.js integration for Plone'
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
 
@@ -19,7 +19,7 @@ setup(name='collective.dynatree',
           "Programming Language :: Python",
       ],
       keywords='jquery dynatree Zope Plone Archetypes Widget tree vocabulary',
-      author='Jens W. Klein, Peter Holzer, et al.',
+      author='BlueDynamics Alliance, et al.',
       author_email='dev@bluedynamics.com',
       url=u'',
       license='GNU General Public Licence',
