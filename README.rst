@@ -85,7 +85,7 @@ Example-ContentType
 -------------------
 
 An example ContentType is provided, but disabled by default. To enable it add
-``collective.dynatree[example]``to both, the eggs and zcml section in your 
+``collective.dynatree[example]`` to both, the eggs and zcml section in your 
 buildout. Rerun buildout, restart Plone and install the 
 ``jquery.dynatree EXAMPLE Content Types`` as an add-on product.  
 
@@ -118,7 +118,7 @@ Changes
 =======
 
 ----------------
-1.0 (unreleased)
+1.0 (2010-11-22)
 ----------------
 
 - Make it work (jensens, hpeter)
