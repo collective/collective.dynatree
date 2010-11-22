@@ -41,7 +41,7 @@ Example
 
     StringField('single_leafs',
         required=0,
-        vocabulary=NamedVocabulary('some_atvm._tree_vocabulary'),
+        vocabulary=NamedVocabulary('some_atvm_tree_vocabulary'),
         widget=DynatreeWidget(
             description="Select one option of tree. Only leafs allowed",
             leafsOnly=True,
@@ -49,7 +49,7 @@ Example
     ),
     LinesField('multiple_all',
         required=0,
-        vocabulary=NamedVocabulary('ch.scb.disposition'),
+        vocabulary=NamedVocabulary('another_atvm_tree_vocabulary'),
         widget=DynatreeWidget(
             description="""Select multiple options of the tree. All selectable.
                            Starts with 2 levels expanded.""",
