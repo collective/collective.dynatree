@@ -8,6 +8,8 @@ collective.dynatree provides the basic integration of the jQuery plugin
 Optional it also provides a full-featured Archetypes Widget with full 
 ATVocabularyManager support, including hierachical VDEX-vocabularies.
 
+.. image:: http://bluedynamics.com/collective.dynatree.png
+
 Installation
 ============
 
