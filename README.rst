@@ -59,7 +59,7 @@ Example
     
 Widget Parameters 
 -----------------
-(additional to the usal suspects of TypeWidget)
+(additional to the usal suspects of TypesWidget)
 
 selectMode
     ``1``=single, ``2``=multiple
