@@ -100,17 +100,8 @@ You can clone it or `get access to the github-collective
 <http://collective.github.com/>`_ and work directly on the project. 
 
 Maintainers of collective.dynatree are Jens Klein and Peter Holzer. We 
-appreciate any contribution and if a release need to be done on pypi, please 
-just contact one of us.
-
-Changes
-=======
-
-----------------
-1.0 (unreleased)
-----------------
-
-- Make it work (jensens, hpeter)
+appreciate any contribution and if a release is needed to be done on pypi, 
+please just contact one of us.
 
 Contributors
 ============
@@ -120,3 +111,12 @@ Contributors
 - Peter Holzer <hpeter@agitator.com>
 
 - Patrick Gerken provided initial idea+code with his package slc.treecategories
+
+Changes
+=======
+
+----------------
+1.0 (unreleased)
+----------------
+
+- Make it work (jensens, hpeter)
