@@ -3,7 +3,7 @@ Dynamic Tree-Widget for Plone
 
 collective.dynatree provides the basic integration of the jQuery plugin
 `jquery.dynatree.js <http://wwwendt.de/tech/dynatree/index.html>`_ (at 
-`google-code <http://code.google.com/p/dynatree/>`_
+`google-code <http://code.google.com/p/dynatree/>`_).
 
 Optional it also provides a full-featured Archetypes Widget with full 
 ATVocabularyManager support, including hierachical VDEX-vocabularies.
