@@ -1,4 +1,3 @@
-=============================
 Dynamic Tree-Widget for Plone
 =============================
 
@@ -64,13 +63,17 @@ Widget Parameters
 
 selectMode
     ``1``=single, ``2``=multiple
+    
 minExpandLevel
     Number of levels which are not allowed to collapse; default=``0``.
+
 rootVisible
     Wether a root node should be showed or not; default=``False``.
+
 autoCollapse
     Automatically collapse all siblings, when a node is expanded; 
     default=``False``.
+
 leafsOnly
     Wether to select only leafs or allow also to select nodes with leafs; 
     default=``False``.             
@@ -84,7 +87,6 @@ An example ContentType is provided, but disabled by default. To enable it add
 buildout. Rerun buildout, restart Plone and install the 
 ``jquery.dynatree EXAMPLE Content Types`` as an add-on product.  
 
-=============================
 Source Code and Contributions
 =============================
 
@@ -101,7 +103,6 @@ Maintainers of collective.dynatree are Jens Klein and Peter Holzer. We
 appreciate any contribution and if a release need to be done on pypi, please 
 just contact one of us.
 
-=======
 Changes
 =======
 
@@ -111,7 +112,6 @@ Changes
 
 - Make it work (jensens, hpeter)
 
-============
 Contributors
 ============
 
