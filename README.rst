@@ -62,21 +62,21 @@ Widget Parameters
 (additional to the usal suspects of TypesWidget)
 
 selectMode
-    ``1``=single, ``2``=multiple
+    1=single, 2=multiple
     
 minExpandLevel
-    Number of levels which are not allowed to collapse; default=``0``.
+    Number of levels which are not allowed to collapse; default=0.
 
 rootVisible
-    Wether a root node should be showed or not; default=``False``.
+    Wether a root node should be showed or not; default=False.
 
 autoCollapse
     Automatically collapse all siblings, when a node is expanded; 
-    default=``False``.
+    default=False.
 
 leafsOnly
     Wether to select only leafs or allow also to select nodes with leafs; 
-    default=``False``.             
+    default=False.             
               
 -------------------
 Example-ContentType
