@@ -121,6 +121,9 @@ Changes
 1.1 (unreleased)
 ----------------
 
+- add MANIFEST.in, so ``*.rst`` gets included in the egg.
+  jensens, 2010-11-29
+
 - make dict2dynatree more robust after report by Rigel Di Scala, 
   jensens, 2010-11-29
 
