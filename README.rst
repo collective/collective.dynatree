@@ -121,7 +121,8 @@ Changes
 1.1 (unreleased)
 ----------------
 
-work in progress, add changes here
+- make dict2dynatree more robust after report by Rigel Di Scala, 
+  jensens, 2010-11-29
 
 ----------------
 1.0 (2010-11-22)

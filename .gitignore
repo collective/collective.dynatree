@@ -9,4 +9,4 @@ src/*.egg-info
 .installed.cfg
 .pydevproject
 .tmp*
-
+dist

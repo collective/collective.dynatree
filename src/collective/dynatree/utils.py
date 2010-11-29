@@ -7,10 +7,10 @@ def dict2dynatree(input_dict, selected, leafsOnly):
     IVocabulary, and transform it to a a dictionary as needed for
     dynatree
     """
-    if input_dict is None:
+    if not input_dict:
         return []
     retval = []
-    for key in input_dict:
+    for key in input_dict.keys():
         title, children = input_dict[key]
         children = dict2dynatree(children, selected, leafsOnly)
 
