@@ -118,7 +118,14 @@ Changes
 =======
 
 ----------------
-1.1 (unreleased)
+1.2 (2010-12-02)
+----------------
+
+- after submit and validation error keep the previous selected values.
+  jensens, 2010-12-02
+
+----------------
+1.1 (2010-11-29)
 ----------------
 
 - add MANIFEST.in, so ``*.rst`` gets included in the egg.

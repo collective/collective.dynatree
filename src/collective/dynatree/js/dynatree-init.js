@@ -15,7 +15,8 @@ jq(document).ready(function() {
 		}
 		// get json url       
         params['initAjax'] = {
-			'url': jqthis.find('.dynatree_ajax_vocabulary').text()
+			url: jqthis.find('.dynatree_ajax_vocabulary').text(),
+            data: {selected: jqthis.find('input').val()}
 		};
 		// activation/ deactivation
 		params['onSelect'] = function(flag, dtnode) {

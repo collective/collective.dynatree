@@ -23,11 +23,10 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
     def __call__(self):
         fieldname = self.request.get('fieldname')
         field = self.context.Schema()[fieldname]
-        tree = lookupVocabulary(self.context, field)
-        selected = field.get(self.context) or []
-        if isinstance(selected, basestring):
-            selected = [selected]
-        return JSONWriter().write(dict2dynatree(tree, selected, field.widget.leafsOnly))
+        tree = lookupVocabulary(self.context, field)        
+        selected = self.request.get('selected', []).split('|')
+        return JSONWriter().write(dict2dynatree(tree, selected, 
+                                                field.widget.leafsOnly))
     
 class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
