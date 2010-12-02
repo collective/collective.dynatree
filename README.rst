@@ -118,6 +118,12 @@ Changes
 =======
 
 ----------------
+1.3 (unreleased)
+----------------
+
+- nothing changed for now (replace this if you did changes)
+
+----------------
 1.2 (2010-12-02)
 ----------------
 
