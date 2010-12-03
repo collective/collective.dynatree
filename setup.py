@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "1.2"
+version = "1.2.1"
 shortdesc = 'jquery.dynatree.js integration for Plone'
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()

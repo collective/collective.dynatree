@@ -117,11 +117,12 @@ Contributors
 Changes
 =======
 
-----------------
-1.3 (unreleased)
-----------------
+------------------
+1.2.1 (2010-12-03)
+------------------
 
-- nothing changed for now (replace this if you did changes)
+- fighting with MANIFEST.in, to much was excluded and egg release broken.
+  should now be better. jensens 2010-12-03
 
 ----------------
 1.2 (2010-12-02)
