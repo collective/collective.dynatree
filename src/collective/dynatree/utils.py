@@ -1,7 +1,7 @@
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 
-def dict2dynatree(input_dict, selected, leafsOnly):
+def dict2dynatree(input_dict, selected, leafsOnly, showKey):
     """
     Recursively parse the dictionary as we get it from the
     IVocabulary, and transform it to a a dictionary as needed for
@@ -12,9 +12,11 @@ def dict2dynatree(input_dict, selected, leafsOnly):
     retval = []
     for key in input_dict.keys():
         title, children = input_dict[key]
-        children = dict2dynatree(children, selected, leafsOnly)
+        children = dict2dynatree(children, selected, leafsOnly, showKey)
 
         new_item = {} #we have to have boolItems
+        if showKey:
+            title = "%s %s" % (key, title)
         new_item['title'] = title
         new_item['key'] = key
         new_item['children'] = children
