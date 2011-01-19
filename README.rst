@@ -79,6 +79,10 @@ autoCollapse
 leafsOnly
     Wether to select only leafs or allow also to select nodes with leafs; 
     default=False.             
+
+showKey
+   To show the terms key in front of the terms value set this to a format 
+   string like ``"%s: %s"``; default=None.
               
 -------------------
 Example-ContentType
@@ -116,6 +120,16 @@ Contributors
 
 Changes
 =======
+
+----------------
+1.3 (2011-01-19)
+----------------
+
+- upgraded jquery.dynatree from upstream to version 1.0.3. jensens 2010-01-19
+
+- added ``showKey`` property to at-widget to show terms key in front of the value.
+  hpeter, jensens, 2010-01-18
+
 
 ------------------
 1.2.1 (2010-12-03)
