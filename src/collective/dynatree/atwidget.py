@@ -94,7 +94,9 @@ class DynatreeWidget(TypesWidget):
             return empty_marker
         value = value.strip("|")
         if self.selectMode > 1:
-            value = value.split('|')
+            value = [_ for _ in value.split('|') if _.strip()]
+            if not value:
+                return empty_marker
         return value, {}
     
 registerWidget(DynatreeWidget,

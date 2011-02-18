@@ -121,14 +121,21 @@ Contributors
 Changes
 =======
 
+
+------------------
+1.3.1 (2011-02-18)
+------------------
+
+- fixed bug: ``required`` on multi-selection did not work. jensens 2011-02-18
+
 ----------------
 1.3 (2011-01-19)
 ----------------
 
 - upgraded jquery.dynatree from upstream to version 1.0.3. jensens 2010-01-19
 
-- added ``showKey`` property to at-widget to show terms key in front of the value.
-  hpeter, jensens, 2010-01-18
+- added ``showKey`` property to at-widget to show terms key in front of the 
+  value. hpeter, jensens, 2010-01-18
 
 
 ------------------
