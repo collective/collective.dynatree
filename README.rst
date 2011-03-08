@@ -122,11 +122,20 @@ Changes
 =======
 
 ------------------
-1.3.1 (2011-03-08)
+1.3.2 (2011-03-08)
 ------------------
 
-- css-registry merges css, so paths to skin were no longer relative. Adding the 
-  resource part helps here. jensens 2011-03-08
+- fixed bug: css-registry merges css, so paths to skin were no longer relative. 
+  Adding the resource part helps here. jensens 2011-03-08
+
+------------------
+1.3.1 (2011-02-18)
+------------------
+
+- fixed bug: ``required`` on multi-selection did not work. jensens 2011-02-18
+
+- added ``showKey`` property to at-widget to show terms key in front of the 
+  value. hpeter, jensens, 2010-01-18
 
 ----------------
 1.3 (2011-01-19)
@@ -136,7 +145,6 @@ Changes
 
 - added ``showKey`` property to at-widget to show terms key in front of the value.
   hpeter, jensens, 2011-01-18
-
 
 ------------------
 1.2.1 (2010-12-03)
