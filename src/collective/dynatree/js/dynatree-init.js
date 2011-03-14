@@ -7,11 +7,11 @@ jq(document).ready(function() {
 		var params = new Array();
 		for (var idx=0; idx<rawparams.length; idx++) {
 			var pair = rawparams[idx].split(',');
-			var value = pair[1].trim();
+			var value = pair[1].replace(/^\s+|\s+$/g, "");
             if (!isNaN(value)) { value = parseInt(value); };
             if (value=='True') { value = true; };
             if (value=='False') { value = false; };		
-			params[pair[0].trim()] = value;
+			params[pair[0].replace(/^\s+|\s+$/g, "")] = value;
 		}
 		// get json url       
         params['initAjax'] = {

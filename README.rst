@@ -122,6 +122,13 @@ Changes
 =======
 
 ------------------
+1.3.3 (2011-03-14)
+------------------
+
+- fixed JS bug with f****g IE. Ported solution used by hpeter at 
+  ``yafowil.widget.dynatree`` witha regexp instead of trim, jensens 2011-03-14
+
+------------------
 1.3.2 (2011-03-08)
 ------------------
 
