@@ -124,6 +124,13 @@ Changes
 =======
 
 ------------------
+1.3.4 (2011-03-31)
+------------------
+
+- for some cases we need to explicit iterate over .keys() - thanks to Jess Hix 
+  for the patch, jensens 2011-03-31
+
+------------------
 1.3.3 (2011-03-14)
 ------------------
 
