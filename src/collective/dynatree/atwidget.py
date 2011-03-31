@@ -71,7 +71,7 @@ class DynatreeWidget(TypesWidget):
                 return None
             if value in treepart:
                 return treepart[value][0]
-            for key in treepart:
+            for key in treepart.keys():
                 result = find(treepart[key][1])
                 if result is not None:
                     return result
