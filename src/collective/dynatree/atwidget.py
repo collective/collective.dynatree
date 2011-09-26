@@ -24,7 +24,7 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
         fieldname = self.request.get('fieldname')
         field = self.context.Schema()[fieldname]
         tree = lookupVocabulary(self.context, field)        
-        selected = self.request.get('selected', []).split('|')
+        selected = self.request.get('selected', '').split('|')
         return JSONWriter().write(dict2dynatree(tree, selected, 
                                                 field.widget.leafsOnly,
                                                 field.widget.showKey))
@@ -37,6 +37,8 @@ class DynatreeWidget(TypesWidget):
                         'rootVisible': False,
                         'autoCollapse': False,
                         'leafsOnly': False,
+                        'sparse': True,
+                        'flatlist': False,
                         'showKey': False})
 
     
@@ -51,7 +53,7 @@ class DynatreeWidget(TypesWidget):
             
         result = [('%s,%s' % (_, getattr(self, _))) 
                   for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
-                            'autoCollapse']]
+                            'autoCollapse', 'sparse', 'flatlist']]
         result.append('title,%s' % self.label)
         return '/'.join(result)
     
