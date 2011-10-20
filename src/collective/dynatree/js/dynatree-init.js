@@ -36,6 +36,7 @@ var DataModel = Backbone.Model.extend({
     },
     getChildren: function(){
         var selected = this.get("selected");
+        var filter = this.get("filter");
         function is_selected_or_has_selected_children(node){
             if ('_cached' in node){
                 return node._cached;
@@ -64,10 +65,21 @@ var DataModel = Backbone.Model.extend({
             node.children = _.filter(node.children, remove_unselected);
             return true;
         }
-        if(this.get("sparse")){
-            return _.filter(this.get("children"), remove_unselected);
+        function remove_non_matching(node){
+            if(!is_selected_or_has_selected_children(node)){
+                return node.title.indexOf(filter) != -1;
+            }
+            node.children = _.filter(node.children, remove_non_matching, filter);
+            return true;
         }
-        return this.get("children");
+        var retval = this.get("children");
+        if(this.get("sparse")){
+            retval = _.filter(retval, remove_unselected);
+        }
+        if(this.get("filter")){
+            retval = _.filter(retval, remove_non_matching);
+        }
+        return retval;
     },
     getDataFor: function(key){
         function getDataFromChildren(key, children){
@@ -97,6 +109,7 @@ var Dynatree = Backbone.View.extend({
         this.model.bind("change:children", this.render);
         this.model.bind("change:selected", this.render);
         this.model.bind("change:sparse", this.render);
+        this.model.bind("change:filter", this.render);
     },
     render:function(model){
         var tree = this.el.dynatree("getTree");
@@ -124,7 +137,12 @@ var Dynatree = Backbone.View.extend({
             this.el.dynatree(params);
             tree = this.el.dynatree("getTree");
         }else{
-            if('sparse' in model.changedAttributes()){
+            if(model.changedAttributes && 
+               (
+                   'sparse' in model.changedAttributes() || 
+                       'filter' in model.changedAttributes()
+               )
+              ){
                 tree.options.children = this.model.getChildren();
             }
             tree.reload();
@@ -153,6 +171,24 @@ var HiddenForm = Backbone.View.extend({
     }
 });
 
+var Filter = Backbone.View.extend({
+    initialize: function(){
+        _.bindAll(this, 'updateFilter', 'render');
+        this.model.bind("change:filter", this.render);
+    },
+    events: {
+        'keyup input': "updateFilter"
+    },
+    updateFilter: function(){
+        var filter = this.el.find('.filter').val();
+        this.model.set({'filter': filter});
+        return false;
+    },
+    render: function(){
+        this.el.find('input').val(this.model.get("filter"));
+    }
+    
+});
 var VariousUIElements = Backbone.View.extend({
     initialize: function(){
         _.bindAll(this, "toggleSparse");
@@ -240,6 +276,10 @@ jq(document).ready(function() {
                                  model: datamodel});
         var hiddeninput = new HiddenForm({el: jqthis.find(".hiddeninput"),
                                     model: datamodel});
+        if(datamodel.get("params").filter){            
+            var filter = new Filter({el: jqthis.find(".dynatree_filter"),
+                                     model: datamodel});
+        }
         if(datamodel.get("params").sparse){
             var various = new VariousUIElements({el: jqthis.find(".ui_controls"),
                                                  model: datamodel});

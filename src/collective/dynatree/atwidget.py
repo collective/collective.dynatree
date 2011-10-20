@@ -38,6 +38,7 @@ class DynatreeWidget(TypesWidget):
                         'autoCollapse': False,
                         'leafsOnly': False,
                         'sparse': True,
+                        'filter': True,
                         'flatlist': False,
                         'showKey': False})
 
@@ -100,7 +101,7 @@ class DynatreeWidget(TypesWidget):
             if not value:
                 return empty_marker
         return value, {}
-    
+
 registerWidget(DynatreeWidget,
                title='Dynatree',
                description=('Renders a tree with selected items '
