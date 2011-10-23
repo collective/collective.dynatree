@@ -268,10 +268,12 @@ jq(document).ready(function() {
 	// get parameters 
 	var jqthis = jq(this);
         var datamodel = new DataModel({url: jqthis.find(".dynatree_ajax_vocabulary").text(),
-                                       selected: _.filter(jqthis.find('input').val().split('|'),
+                                       selected: _.filter(jqthis.find('input.selected').val().split('|'),
                                                           function(elem){return elem;}),
-                                       params: jq(this).find('.dynatree_parameters').text()
-                                      });
+                                       params: jqthis.find('.dynatree_parameters').text(),
+                                       name: jqthis.find('input.selected').attr('id')
+                                     });
+        jqthis.data('collective.dynatree', datamodel);
         var tree = new Dynatree({el: jqthis.find('.collective-dynatree-tree'),
                                  model: datamodel});
         var hiddeninput = new HiddenForm({el: jqthis.find(".hiddeninput"),
