@@ -37,25 +37,26 @@ var DataModel = Backbone.Model.extend({
     getChildren: function(){
         var selected = this.get("selected");
         var filter = this.get("filter");
+        var cache = {};
         function is_selected_or_has_selected_children(node){
-            if ('_cached' in node){
-                return node._cached;
+            if (node.key in cache){
+                return cache[node.key];
             }
             if(_.detect(selected, function(selected_key){
                 return selected_key == node.key;
             })){
-                node._cached = true;
+                cache[node.key] = true;
                 return true;
             }else{
                 if(_.detect(node.children, function(child){
                     return is_selected_or_has_selected_children(child);
                 })){
-                    node._cached = true;
+                    cache[node.key] = true;
                     return true;
                     
                 }
             }
-            node._cached = false;
+            cache[node.key] = false;
             return false;
         };
         function remove_unselected(node){
@@ -182,6 +183,9 @@ var Filter = Backbone.View.extend({
     updateFilter: function(){
         var filter = this.el.find('.filter').val();
         this.model.set({'filter': filter});
+        if(filter && this.model.get("sparse")){
+            this.model.set({sparse: false});
+        }
         return false;
     },
     render: function(){
@@ -191,15 +195,18 @@ var Filter = Backbone.View.extend({
 });
 var VariousUIElements = Backbone.View.extend({
     initialize: function(){
-        _.bindAll(this, "toggleSparse");
+        _.bindAll(this, "toggleSparse", "render");
+        this.model.bind("change:sparse", this.render);
         this.render();
     },
     events: {
         "click .sparse": "toggleSparse"
     },
     toggleSparse: function(){
-        this.model.set({sparse: !this.model.get("sparse")});
-        this.render();
+        if(!this.model.get("filter")){
+            this.model.set({sparse: !this.model.get("sparse")});
+            this.render();
+        }
     },
     render: function(){
         if(this.model.get("sparse")){
