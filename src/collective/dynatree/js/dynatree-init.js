@@ -36,27 +36,27 @@ var DataModel = Backbone.Model.extend({
     },
     getChildren: function(){
         var selected = this.get("selected");
-        var filter = this.get("filter");
-        var cache = {};
+        var filter = this.get("filter") && this.get("filter").toLowerCase();
+        var sparse_cache = {};
+        var filter_cache = {};
         function is_selected_or_has_selected_children(node){
-            if (node.key in cache){
-                return cache[node.key];
+            if (node.key in sparse_cache){
+                return sparse_cache[node.key];
             }
             if(_.detect(selected, function(selected_key){
                 return selected_key == node.key;
             })){
-                cache[node.key] = true;
+                sparse_cache[node.key] = true;
                 return true;
             }else{
                 if(_.detect(node.children, function(child){
                     return is_selected_or_has_selected_children(child);
                 })){
-                    cache[node.key] = true;
+                    sparse_cache[node.key] = true;
                     return true;
-                    
                 }
             }
-            cache[node.key] = false;
+            sparse_cache[node.key] = false;
             return false;
         };
         function remove_unselected(node){
@@ -68,10 +68,23 @@ var DataModel = Backbone.Model.extend({
         }
         function remove_non_matching(node){
             if(!is_selected_or_has_selected_children(node)){
-                return node.title.indexOf(filter) != -1;
+                if (node.title.toLowerCase().indexOf(filter) != -1){
+                    return true;
+                }else{
+                    node.children = _.filter(node.children, remove_non_matching, filter);
+                    return !!node.children.length;
+                }
             }
             node.children = _.filter(node.children, remove_non_matching, filter);
             return true;
+        }
+        function show_selected(node){
+            if(_.detect(node.children, function(child){
+                return is_selected_or_has_selected_children(child);
+            })){
+                node.expand = true;
+            }
+            _.each(node.children, show_selected);
         }
         var retval = this.get("children");
         if(this.get("sparse")){
@@ -80,6 +93,7 @@ var DataModel = Backbone.Model.extend({
         if(this.get("filter")){
             retval = _.filter(retval, remove_non_matching);
         }
+        _.each(retval, show_selected);
         return retval;
     },
     getDataFor: function(key){
