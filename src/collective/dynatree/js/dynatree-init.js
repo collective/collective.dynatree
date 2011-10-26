@@ -36,26 +36,27 @@ var DataModel = Backbone.Model.extend({
     },
     getChildren: function(){
         var selected = this.get("selected");
-        var filter = this.get("filter");
+        var filter = this.get("filter") && this.get("filter").toLowerCase();
+        var sparse_cache = {};
+        var filter_cache = {};
         function is_selected_or_has_selected_children(node){
-            if ('_cached' in node){
-                return node._cached;
+            if (node.key in sparse_cache){
+                return sparse_cache[node.key];
             }
             if(_.detect(selected, function(selected_key){
                 return selected_key == node.key;
             })){
-                node._cached = true;
+                sparse_cache[node.key] = true;
                 return true;
             }else{
                 if(_.detect(node.children, function(child){
                     return is_selected_or_has_selected_children(child);
                 })){
-                    node._cached = true;
+                    sparse_cache[node.key] = true;
                     return true;
-                    
                 }
             }
-            node._cached = false;
+            sparse_cache[node.key] = false;
             return false;
         };
         function remove_unselected(node){
@@ -67,10 +68,23 @@ var DataModel = Backbone.Model.extend({
         }
         function remove_non_matching(node){
             if(!is_selected_or_has_selected_children(node)){
-                return node.title.indexOf(filter) != -1;
+                if (node.title.toLowerCase().indexOf(filter) != -1){
+                    return true;
+                }else{
+                    node.children = _.filter(node.children, remove_non_matching, filter);
+                    return !!node.children.length;
+                }
             }
             node.children = _.filter(node.children, remove_non_matching, filter);
             return true;
+        }
+        function show_selected(node){
+            if(_.detect(node.children, function(child){
+                return is_selected_or_has_selected_children(child);
+            })){
+                node.expand = true;
+            }
+            _.each(node.children, show_selected);
         }
         var retval = this.get("children");
         if(this.get("sparse")){
@@ -79,6 +93,7 @@ var DataModel = Backbone.Model.extend({
         if(this.get("filter")){
             retval = _.filter(retval, remove_non_matching);
         }
+        _.each(retval, show_selected);
         return retval;
     },
     getDataFor: function(key){
@@ -182,6 +197,9 @@ var Filter = Backbone.View.extend({
     updateFilter: function(){
         var filter = this.el.find('.filter').val();
         this.model.set({'filter': filter});
+        if(filter && this.model.get("sparse")){
+            this.model.set({sparse: false});
+        }
         return false;
     },
     render: function(){
@@ -191,15 +209,18 @@ var Filter = Backbone.View.extend({
 });
 var VariousUIElements = Backbone.View.extend({
     initialize: function(){
-        _.bindAll(this, "toggleSparse");
+        _.bindAll(this, "toggleSparse", "render");
+        this.model.bind("change:sparse", this.render);
         this.render();
     },
     events: {
         "click .sparse": "toggleSparse"
     },
     toggleSparse: function(){
-        this.model.set({sparse: !this.model.get("sparse")});
-        this.render();
+        if(!this.model.get("filter")){
+            this.model.set({sparse: !this.model.get("sparse")});
+            this.render();
+        }
     },
     render: function(){
         if(this.model.get("sparse")){
@@ -268,10 +289,12 @@ jq(document).ready(function() {
 	// get parameters 
 	var jqthis = jq(this);
         var datamodel = new DataModel({url: jqthis.find(".dynatree_ajax_vocabulary").text(),
-                                       selected: _.filter(jqthis.find('input').val().split('|'),
+                                       selected: _.filter(jqthis.find('input.selected').val().split('|'),
                                                           function(elem){return elem;}),
-                                       params: jq(this).find('.dynatree_parameters').text()
-                                      });
+                                       params: jqthis.find('.dynatree_parameters').text(),
+                                       name: jqthis.find('input.selected').attr('id')
+                                     });
+        jqthis.data('collective.dynatree', datamodel);
         var tree = new Dynatree({el: jqthis.find('.collective-dynatree-tree'),
                                  model: datamodel});
         var hiddeninput = new HiddenForm({el: jqthis.find(".hiddeninput"),
