@@ -8,15 +8,15 @@
 				
     <javascript cacheable="True" compression="True" cookable="True"
         enabled="True" inline="False" expression=""
-		insert-after="++resource++jquery.dynatree/jquery.dynatree.min.js"
-        id="++resource++collective.dynatree/dynatree-init.js"/>
-    <javascript cacheable="True" compression="True" cookable="True"
-        enabled="True" inline="False" expression=""
 		insert-after="++resource++collective.dynatree/dynatree-init.js"
         id="++resource++collective.dynatree/underscore.js"/>
     <javascript cacheable="True" compression="True" cookable="True"
         enabled="True" inline="False" expression=""
 		insert-after="++resource++collective.dynatree/underscore.js"
         id="++resource++collective.dynatree/backbone.js"/>
+    <javascript cacheable="True" compression="True" cookable="True"
+        enabled="True" inline="False" expression=""
+		insert-after="++resource++jquery.dynatree/backbone.js"
+        id="++resource++collective.dynatree/dynatree-init.js"/>
 </object>
 
