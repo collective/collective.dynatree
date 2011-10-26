@@ -1,11 +1,20 @@
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 
-def dict2dynatree(input_dict, selected, leafsOnly, showKey):
+def dict2dynatree(input_dict, selected, leafsOnly, showKey = False):
     """
     Recursively parse the dictionary as we get it from the
     IVocabulary, and transform it to a a dictionary as needed for
     dynatree
+    input_dict:
+        dictionary as provided by getVocabularyDict from 
+        Products.ATVocabularyManager
+    selected:
+        List of keys that should be preselected
+    leafsOnly:
+        Whether only leafes should be selectable or also tree nodes
+    showKey:
+        Whether the title should start with the key or not
     """
     if not input_dict:
         return []
