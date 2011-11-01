@@ -83,8 +83,7 @@ var DataModel = Backbone.Model.extend({
                     }
                 }
             }
-            node.children = map_no_false(node.children, remove_non_matching);
-            return true;
+            return false; // Just for making jslint happy
         }
         function show_selected(node){
             if(_.detect(node.children, function(child){
@@ -160,14 +159,7 @@ var Dynatree = Backbone.View.extend({
             this.el.dynatree(params);
             tree = this.el.dynatree("getTree");
         }else{
-            if(model.changedAttributes && 
-               (
-                   'sparse' in model.changedAttributes() || 
-                       'filter' in model.changedAttributes()
-               )
-              ){
-                tree.options.children = this.model.getChildren();
-            }
+            tree.options.children = this.model.getChildren();
             tree.reload();
         }
         // We are faking here thet we are outside of the select event
