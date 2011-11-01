@@ -34,7 +34,7 @@ var DataModel = Backbone.Model.extend({
     update: function(result){
         var new_children = JSON.parse(result);
         var new_selected = this.validateSelected(new_children);
-        this.set({selected: new_selected});
+        this.set({selected: new_selected}, {silent:true});
         this.set({children: new_children});
     },
     validateSelected: function(new_children){
