@@ -32,7 +32,17 @@ var DataModel = Backbone.Model.extend({
         this.set({selected: selected});
     },
     update: function(result){
-        this.set({children: JSON.parse(result)});
+        var new_children = JSON.parse(result);
+        var new_selected = this.validateSelected(new_children);
+        this.set({selected: new_selected});
+        this.set({children: new_children});
+    },
+    validateSelected: function(new_children){
+        function get_keys(node){
+            return [node.key] + _.map(node.children, get_keys);
+        }
+        var keys = _.map(new_children, get_keys);
+        return _.intersection(keys, this.get("selected"));
     },
     getChildren: function(){
         var selected = this.get("selected");
@@ -83,7 +93,9 @@ var DataModel = Backbone.Model.extend({
                     }
                 }
             }
-            return false; // Just for making jslint happy
+            var retval = _.clone(node);
+            retval.children = map_no_false(retval.children, remove_non_matching);
+            return retval;
         }
         function show_selected(node){
             if(_.detect(node.children, function(child){
