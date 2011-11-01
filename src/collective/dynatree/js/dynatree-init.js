@@ -39,9 +39,9 @@ var DataModel = Backbone.Model.extend({
     },
     validateSelected: function(new_children){
         function get_keys(node){
-            return [node.key] + _.map(node.children, get_keys);
+            return [node.key].concat(_.map(node.children, get_keys));
         }
-        var keys = _.map(new_children, get_keys);
+        var keys = _.flatten(_.map(new_children, get_keys));
         return _.intersection(keys, this.get("selected"));
     },
     getChildren: function(){
