@@ -38,6 +38,9 @@ var DataModel = Backbone.Model.extend({
         var selected = this.get("selected");
         var filter = this.get("filter") && this.get("filter").toLowerCase();
         var sparse_cache = {};
+        function map_no_false(elems, filter){
+            return _.without(_.map(elems, filter));
+        };
         function is_selected_or_has_selected_children(node){
             if (node.key in sparse_cache){
                 return sparse_cache[node.key];
@@ -62,19 +65,25 @@ var DataModel = Backbone.Model.extend({
             if(!is_selected_or_has_selected_children(node)){
                 return false;
             }
-            node.children = _.filter(node.children, remove_unselected);
-            return true;
+            var retval = _.clone(node);
+            retval.children = map_no_false(retval.children, remove_unselected);
+            return retval;
         }
         function remove_non_matching(node){
             if(!is_selected_or_has_selected_children(node)){
                 if (node.title.toLowerCase().indexOf(filter) != -1){
-                    return true;
+                    return _.clone(node);
                 }else{
-                    node.children = _.filter(node.children, remove_non_matching, filter);
-                    return !!node.children.length;
+                    var retval = _.clone(node);
+                    retval.children = map_no_false(retval.children, remove_non_matching);
+                    if(!!retval.children.length){
+                        return retval;
+                    }else{
+                        return false;
+                    }
                 }
             }
-            node.children = _.filter(node.children, remove_non_matching, filter);
+            node.children = map_no_false(node.children, remove_non_matching);
             return true;
         }
         function show_selected(node){
@@ -87,10 +96,10 @@ var DataModel = Backbone.Model.extend({
         }
         var retval = this.get("children");
         if(this.get("sparse")){
-            retval = _.filter(retval, remove_unselected);
+            retval = map_no_false(retval, remove_unselected);
         }
         if(this.get("filter")){
-            retval = _.filter(retval, remove_non_matching);
+            retval = map_no_false(retval, remove_non_matching);
         }
         _.each(retval, show_selected);
         return retval;
