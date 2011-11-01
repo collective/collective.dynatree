@@ -39,7 +39,7 @@ var DataModel = Backbone.Model.extend({
         var filter = this.get("filter") && this.get("filter").toLowerCase();
         var sparse_cache = {};
         function map_no_false(elems, filter){
-            return _.without(_.map(elems, filter));
+            return _.without(_.map(elems, filter), false);
         };
         function is_selected_or_has_selected_children(node){
             if (node.key in sparse_cache){
