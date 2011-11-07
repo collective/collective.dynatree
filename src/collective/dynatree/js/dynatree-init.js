@@ -276,6 +276,7 @@ var FlatListDisplay = Backbone.View.extend({
                 last_elem = new_elem;
             }
         });
+        el.append("<div class='visualClear'></div>");
     },
     getOrderedKeys: function(){
         var model = this.model;
