@@ -32,6 +32,11 @@
       <metal:use use-macro="field_macro | context/widgets/field/macros/edit" >    	
 	      <div metal:fill-slot="widget_body" 
 		       class="dynatree-atwidget">
+                <div class="flatlist_container">
+                  <div class="flatlist-template">
+                    <div class="flatlist-item" key="{{ key }}"><span class="delete">X</span>&nbsp;{{ title }}</div>
+                  </div>
+                </div>
                 <div class="dynatree_filter">
                   <input type="text" class="filter" />
                 </div>
@@ -52,14 +57,6 @@
 	               />
                 <div class="ui_controls">
                   <div class="sparse">Sparse</div>
-                </div>
-                <div class="flatlist_container">
-                  <div class="flatlist-template">
-                    <span class="flatlist-item" key="{{ key }}">
-                      <span class="delete">X</span>
-                      {{ title }}
-                    </span>
-                  </div>
                 </div>
               </div>
 	  </metal:use>
