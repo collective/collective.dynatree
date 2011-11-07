@@ -41,7 +41,7 @@
                 <div class="dynatree_parameters hiddenStructure" 
                      tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'" />
 	        <input type="hidden"
-                       class="hiddeninput"
+                       class="hiddeninput selected"
 	               name=""
 	               id=""
 	               value=""
