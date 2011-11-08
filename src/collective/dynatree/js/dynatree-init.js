@@ -259,7 +259,8 @@ var FlatListDisplay = Backbone.View.extend({
         var model = this.model;
         var template = this.template;
         var el = this.el;
-        _.each(this.el.find(".flatlist-item").splice(1), function(item){
+        var flatlist_items = this.el.find(".flatlist-item");
+        _.each(flatlist_items.splice(1, flatlist_items.length), function(item){
             jq(item).remove();
         });
         _.each(ordered_keys, function(key){
