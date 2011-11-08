@@ -241,13 +241,13 @@ var VariousUIElements = Backbone.View.extend({
 
 var FlatListDisplay = Backbone.View.extend({
     initialize: function(){
-        _.bindAll(this, "render", "delete");
+        _.bindAll(this, "render", "delete_elem");
         this.template = _.template(this.el.find(".flatlist-template").html());
         this.model.bind("change:selected", this.render);
         this.model.bind("change:children", this.render);
     },
     events: {
-        "click .delete": "delete"
+        "click .delete": "delete_elem"
     },
     render: function(){
         var last_elem = undefined;
@@ -285,7 +285,7 @@ var FlatListDisplay = Backbone.View.extend({
         }
         return _.sortBy(model.get("selected"), sortFunc);
     },
-    delete: function(event){
+    delete_elem: function(event){
         var key = jq(event.target).parent(".flatlist-item").attr("key");
         var new_selected = _.without(this.model.get("selected"), key);
         this.model.update_selected(new_selected);
