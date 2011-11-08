@@ -32,14 +32,24 @@ var DataModel = Backbone.Model.extend({
         this.set({selected: selected});
     },
     update: function(result){
-        this.set({children: JSON.parse(result)});
+        var new_children = JSON.parse(result);
+        var new_selected = this.validateSelected(new_children);
+        this.set({selected: new_selected}, {silent:true});
+        this.set({children: new_children});
+    },
+    validateSelected: function(new_children){
+        function get_keys(node){
+            return [node.key].concat(_.map(node.children, get_keys));
+        }
+        var keys = _.flatten(_.map(new_children, get_keys));
+        return _.intersection(keys, this.get("selected"));
     },
     getChildren: function(){
         var selected = this.get("selected");
         var filter = this.get("filter") && this.get("filter").toLowerCase();
         var sparse_cache = {};
         function map_no_false(elems, filter){
-            return _.without(_.map(elems, filter));
+            return _.without(_.map(elems, filter), false);
         };
         function is_selected_or_has_selected_children(node){
             if (node.key in sparse_cache){
@@ -83,8 +93,9 @@ var DataModel = Backbone.Model.extend({
                     }
                 }
             }
-            node.children = map_no_false(node.children, remove_non_matching);
-            return true;
+            var retval = _.clone(node);
+            retval.children = map_no_false(retval.children, remove_non_matching);
+            return retval;
         }
         function show_selected(node){
             if(_.detect(node.children, function(child){
@@ -160,14 +171,7 @@ var Dynatree = Backbone.View.extend({
             this.el.dynatree(params);
             tree = this.el.dynatree("getTree");
         }else{
-            if(model.changedAttributes && 
-               (
-                   'sparse' in model.changedAttributes() || 
-                       'filter' in model.changedAttributes()
-               )
-              ){
-                tree.options.children = this.model.getChildren();
-            }
+            tree.options.children = this.model.getChildren();
             tree.reload();
         }
         // We are faking here thet we are outside of the select event
@@ -272,6 +276,7 @@ var FlatListDisplay = Backbone.View.extend({
                 last_elem = new_elem;
             }
         });
+        el.append("<div class='visualClear'></div>");
     },
     getOrderedKeys: function(){
         var model = this.model;
