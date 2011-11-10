@@ -38,6 +38,7 @@ schema = BaseSchema + Schema((
             description="""Select multiple options of the tree. All selectable.
                            Starts with 2 levels expanded.""",
             selectMode=3,
+            flatlist=True,
             minExpandLevel=2),
     ),
 ))
