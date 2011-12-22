@@ -15,7 +15,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
         fieldname = self.request.get('fieldname')
         #field = self.context.schema[fieldname]
         # TODO: This is hardcoded, Incredibly stupid, needs to change.
-        atv = NamedVocabulary('staralliance-productcategories')
+        atv = NamedVocabulary('staralliance.productcategories')
         tree = atv.getVocabularyDict(self.context)
         selected = self.request.get('selected', []).split('|')
         return JSONWriter().write(dict2dynatree(tree, selected,
