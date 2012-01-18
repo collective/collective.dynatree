@@ -32,13 +32,21 @@
       <metal:use use-macro="field_macro | context/widgets/field/macros/edit" >    	
 	      <div metal:fill-slot="widget_body" 
 		       class="dynatree-atwidget">
-		    <div class="collective-dynatree-tree">TREE</div>
-
-			<div class="dynatree_ajax_vocabulary hiddenStructure" 
-				 tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
-	 		<div class="dynatree_parameters hiddenStructure" 
-				 tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'" />
+                <div class="flatlist_container">
+                  <div class="flatlist-template">
+                    <div class="flatlist-item" key="{{ key }}"><span class="delete">X</span>&nbsp;{{ title }}</div>
+                  </div>
+                </div>
+                <div class="dynatree_filter">
+                  <input type="text" class="filter" />
+                </div>
+                <div class="collective-dynatree-tree">Tree</div>
+                <div class="dynatree_ajax_vocabulary hiddenStructure" 
+                     tal:content="string:${context_url}/@@at_widget_dynatree_json?fieldname=${fieldName}" />
+                <div class="dynatree_parameters hiddenStructure" 
+                     tal:content="python:widget.dynatreeParameters(context, field)+'/checkbox,True'" />
 	        <input type="hidden"
+                       class="hiddeninput selected"
 	               name=""
 	               id=""
 	               value=""
@@ -47,7 +55,10 @@
 	                               id fieldName;
 	                               value python:widget.dynatreeValue(value);"
 	               />
-		  </div>
+                <div class="ui_controls">
+                  <div class="sparse">Sparse</div>
+                </div>
+              </div>
 	  </metal:use>
 	</metal:macro>
 	
