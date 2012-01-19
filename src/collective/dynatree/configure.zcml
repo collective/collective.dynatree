@@ -40,7 +40,6 @@
     />   
 
     <include package="plone.z3cform" />
-
     <class class=".widget.DynatreeWidget">
         <require permission="zope.Public"
                  interface=".interfaces.IDynatreeWidget" />
@@ -53,18 +52,11 @@
         template="input.pt" 
         />
 
-    <z3c:widgetTemplate
-        mode="display"
-        widget=".interfaces.IDynatreeWidget"        
-        layer="z3c.form.interfaces.IFormLayer"
-        template="display.pt" 
-        />
-
     <browser:page
-     for="*"
-     name="widget_dynatree_json"
-     permission="zope2.View"
-     class=".widget.FieldVocabDynatreeJsonView"
-     />	
+        for="*"
+        name="widget_dynatree_json"
+        permission="zope2.View"
+        class=".widget.FieldVocabDynatreeJsonView"
+        />	
 	 
 </configure>
