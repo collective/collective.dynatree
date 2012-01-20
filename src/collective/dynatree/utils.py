@@ -55,7 +55,7 @@ def atvocabularydict2dynatree(input_dict, selected, leafsOnly, showKey=False):
     retval = []
     for key in input_dict.keys():
         title, children = input_dict[key]
-        children = dict2dynatree(children, selected, leafsOnly, showKey)
+        children = atvocabularydict2dynatree(children, selected, leafsOnly, showKey)
 
         new_item = {}  # we have to have boolItems
         if showKey:
