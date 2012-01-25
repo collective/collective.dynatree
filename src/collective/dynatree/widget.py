@@ -42,9 +42,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
         factory = zope.component.getUtility(IVocabularyFactory, vname)
         tree = factory(context)
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(dict2dynatree(tree._terms, selected,
-                                                True,
-                                                False))
+        return JSONWriter().write(dict2dynatree(tree, selected, True, False))
 
 
 class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
