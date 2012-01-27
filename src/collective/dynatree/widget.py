@@ -84,3 +84,5 @@ def DynatreeFieldWidget(field, request):
     """
     return z3c.form.widget.FieldWidget(field, DynatreeWidget(request))
 
+
+

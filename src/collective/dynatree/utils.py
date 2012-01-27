@@ -23,7 +23,7 @@ def dict2dynatree(input_dict, selected, only_leaves, showKey=False):
         children = dict2dynatree(input_dict[key], selected, only_leaves, showKey)
 
         new_item = {}  # we have to have boolItems
-        new_item['title'] = key.value
+        new_item['title'] = key.title or key.value
         new_item['key'] = key.token
         new_item['children'] = children
         new_item['select'] = key.token in selected
