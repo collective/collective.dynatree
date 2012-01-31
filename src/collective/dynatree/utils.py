@@ -10,7 +10,7 @@ def dict2dynatree(input_dict, selected, only_leaves, show_key=False):
 
     input_dict:
         dictionary as provided by getVocabularyDict from 
-        Products.ATVocabularyManager
+        Products.ATVocabularyManager or a zope.schema.TreeVocabulary
     selected:
         List of keys that should be preselected
     only_leaves:
