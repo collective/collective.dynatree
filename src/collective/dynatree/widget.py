@@ -41,6 +41,9 @@ class FieldVocabDynatreeJsonView(BrowserView):
         vname = field.vocabularyName
         factory = zope.component.getUtility(IVocabularyFactory, vname)
         tree = factory(context)
+        # XXX: "selected" is not set in input.pt, so does it make sense to check
+        # for it here? Only if this json view is called elsewhere, which
+        # doesn't seem to be the case...
         selected = self.request.get('selected', '').split('|')
         return JSONWriter().write(dict2dynatree(tree, selected, True, False))
 
@@ -58,6 +61,10 @@ class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
     leafsOnly = True
     showKey = False
     atvocabulary = None
+
+    @property
+    def widget_value(self):
+        return self.request.get(self.__name__, '|'.join(v for v in self.value))
 
     @property
     def field_name(self):

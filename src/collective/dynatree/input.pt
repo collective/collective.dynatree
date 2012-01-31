@@ -7,7 +7,7 @@
     <input class="hiddeninput selected" 
            type="hidden" name="" id="" value="" size="120"
            tal:attributes="name view/name;
-                           id view/id;
-                           value view/value;"
+                           id view/field_name;
+                           value view/widget_value;"
            />
 </div>
