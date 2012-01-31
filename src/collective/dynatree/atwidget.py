@@ -3,7 +3,7 @@ from AccessControl import ClassSecurityInfo
 from Products.Five.browser import BrowserView
 from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget
-from utils import atvocabularydict2dynatree
+from utils import dict2dynatree
 from utils import lookupVocabulary
 
 class DynatreeWidgetMacros(BrowserView):
@@ -22,8 +22,8 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
         field = self.context.Schema()[fieldname]
         tree = lookupVocabulary(self.context, field)        
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(atvocabularydict2dynatree(
-                                                tree, selected, 
+        return JSONWriter().write(dict2dynatree(tree, 
+                                                selected, 
                                                 field.widget.leafsOnly,
                                                 field.widget.showKey))
     
