@@ -123,6 +123,12 @@ Contributors
 Changes
 =======
 
+----------------
+1.4 (Unreleased)
+----------------
+
+- Add a z3c.form dynatree widget. jbeyers, thomas_w, jcbrand 2012-02-08
+
 ------------------
 1.3.4 (2011-03-31)
 ------------------
