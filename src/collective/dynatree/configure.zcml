@@ -1,5 +1,6 @@
 <configure
  xmlns="http://namespaces.zope.org/zope"
+ xmlns:z3c="http://namespaces.zope.org/z3c"
  xmlns:browser="http://namespaces.zope.org/browser"
  xmlns:i18n="http://namespaces.zope.org/i18n"
  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
@@ -38,4 +39,24 @@
      directory="js" 
     />   
 
+    <include package="plone.z3cform" />
+    <class class=".widget.DynatreeWidget">
+        <require permission="zope.Public"
+                 interface=".interfaces.IDynatreeWidget" />
+    </class>
+
+    <z3c:widgetTemplate
+        mode="input"
+        widget=".interfaces.IDynatreeWidget"        
+        layer="z3c.form.interfaces.IFormLayer"
+        template="input.pt" 
+        />
+
+    <browser:page
+        for="*"
+        name="widget_dynatree_json"
+        permission="zope2.View"
+        class=".widget.FieldVocabDynatreeJsonView"
+        />	
+	 
 </configure>

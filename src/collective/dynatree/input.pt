@@ -1,0 +1,13 @@
+<div class="dynatree-atwidget">
+    <div class="collective-dynatree-tree">TREE</div>
+    <div class="dynatree_ajax_vocabulary hiddenStructure" 
+         tal:content="string:${context/absolute_url}/@@widget_dynatree_json?fieldname=${view/field_name}&portal_type=${view/portal_type}"/>
+    <div class="dynatree_parameters hiddenStructure" 
+        tal:content="string:${view/dynatree_parameters}/checkbox,True" />
+    <input class="hiddeninput selected" 
+           type="hidden" name="" id="" value="" size="120"
+           tal:attributes="name view/name;
+                           id view/field_name;
+                           value view/widget_value;"
+           />
+</div>

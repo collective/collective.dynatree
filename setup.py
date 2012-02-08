@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = "1.3.4"
+version = "1.4dev"
 shortdesc = 'jquery.dynatree.js integration for Plone'
 longdesc = open(os.path.join(os.path.dirname(__file__), 'README.rst')).read()
 longdesc += open(os.path.join(os.path.dirname(__file__), 'LICENSE.rst')).read()
@@ -31,6 +31,7 @@ setup(name='collective.dynatree',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'zope.schema >= 4.1dev',
           'Plone',
           'collective.js.jqueryui',
           'z3c.json',          
