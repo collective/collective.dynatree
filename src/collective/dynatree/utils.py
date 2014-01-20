@@ -5,11 +5,11 @@ from Products.Archetypes.utils import OrderedDict
 
 def dict2dynatree(input_dict, selected, only_leaves, show_key=False):
     """
-    Recursively parse the dictionary as we get it from the IVocabulary, 
+    Recursively parse the dictionary as we get it from the IVocabulary,
     and transform it to a a dictionary as needed for dynatree.
 
     input_dict:
-        dictionary as provided by getVocabularyDict from 
+        dictionary as provided by getVocabularyDict from
         Products.ATVocabularyManager or a zope.schema.TreeVocabulary
     selected:
         List of keys that should be preselected
