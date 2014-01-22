@@ -7,11 +7,11 @@ ul.dynatree-container
 	font-size: 10pt; /* font size should not be too big */
 	white-space: nowrap;
 	padding: 3px;
-
+	margin: 0; /* issue 201 */
 	background-color: white;
 	border: 1px dotted gray;
-
 	overflow: auto;
+	height: 100%; /* issue 263 */
 }
 
 ul.dynatree-container ul
@@ -31,7 +31,7 @@ ul.dynatree-container li
 	background-attachment: scroll;
 	background-color: transparent;
 	background-repeat: repeat-y;
-	background-image: url("++resource++jquery.dynatree/skin/vline.gif");
+	background-image: url("vline.gif");
 	background-position: 0 0;
 	/*
 	background-image: url("icons_96x256.gif");
@@ -74,13 +74,14 @@ span.dynatree-drag-helper-img,
 {
 	width: 16px;
 	height: 16px;
-	display: -moz-inline-box; /* @ FF 1+2 */
+/*	display: -moz-inline-box; /* @ FF 1+2 removed for issue 221 */
+/*	-moz-box-align: start; /* issue 221 */
 	display: inline-block; /* Required to make a span sizeable */
 	vertical-align: top;
 	background-repeat: no-repeat;
 	background-position: left;
-	background-image: url("++resource++jquery.dynatree/skin/icons.gif");
-	background-position: 0px 0px;
+	background-image: url("icons.gif");
+	background-position: 0 0;
 }
 
 /** Used by 'icon' node option: */
@@ -143,7 +144,8 @@ span.dynatree-expander
 }
 .dynatree-loading span.dynatree-expander  /* 'Loading' status overrides all others */
 {
-	background-image: url("++resource++jquery.dynatree/skin/loading.gif");
+	background-position: 0 0;
+	background-image: url("loading.gif");
 }
 
 
@@ -241,7 +243,7 @@ span.dynatree-icon /* Default icon */
 
 .dynatree-statusnode-wait span.dynatree-icon
 {
-	background-image: url("++resource++jquery.dynatree/skin/loading.gif");
+	background-image: url("loading.gif");
 }
 
 .dynatree-statusnode-error span.dynatree-icon
@@ -258,8 +260,10 @@ span.dynatree-icon /* Default icon */
    Removed again for issue 165; (133 couldn't be reproduced) */
 span.dynatree-node
 {
-/*  display: -moz-inline-box; /* @ FF 1+2 */
-/*  display: inline-block; /* Required to make a span sizeable */
+/*	display: -moz-inline-box; /* issue 133, 165, 172, 192. removed for issue 221*/
+/*	-moz-box-align: start; /* issue 221 */
+	display: inline-block; /* issue 373 Required to make a span sizeable */
+	vertical-align: top;
 }
 
 
@@ -278,12 +282,13 @@ ul.dynatree-container a
 ul.dynatree-container a:hover
 {
 /*	text-decoration: underline; */
-	background: #F2F7FD; /* light blue */
+	background-color: #F2F7FD; /* light blue */
 	border-color: #B8D6FB; /* darker light blue */
 }
 
 span.dynatree-node a
 {
+	font-size: 10pt; /* required for IE, quirks mode */
 	display: inline-block; /* Better alignment, when title contains <br> */
 /*	vertical-align: top;*/
 	padding-left: 3px;
@@ -346,6 +351,7 @@ span.dynatree-drag-helper-img
 }
 div.dynatree-drag-helper /*.dynatree-drop-accept*/
 {
+
 /*    border-color: green;
 	background-color: red;*/
 }
@@ -369,6 +375,8 @@ div.dynatree-drop-reject span.dynatree-drag-helper-img
 	width: 24px;
 	position: absolute;
 	background-position: 0 -128px;
+	margin: 0;
+/*	border: 1px solid red; */
 }
 #dynatree-drop-marker.dynatree-drop-after,
 #dynatree-drop-marker.dynatree-drop-before
@@ -405,9 +413,6 @@ span.dynatree-drop-target
 }
 span.dynatree-drop-target a
 {
-	/*background-repeat: no-repeat;
-	background-position: right;
-	background-image: url("drop_child.gif");*/
 }
 span.dynatree-drop-target.dynatree-drop-accept a
 {
@@ -422,9 +427,6 @@ span.dynatree-drop-target.dynatree-drop-reject
 }
 span.dynatree-drop-target.dynatree-drop-after a
 {
-	/*background-repeat: repeat-x;
-	background-position: bottom;
-	background-image: url("drop_append.gif");*/
 }
 
 

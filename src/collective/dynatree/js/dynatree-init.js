@@ -1,10 +1,11 @@
-(function(jq) {
+_.templateSettings = {
+  interpolate : /\{\{(.+?)\}\}/g
+};
 
-	_.templateSettings = {
-	  interpolate : /\{\{(.+?)\}\}/g
-	};
+(function(jq) {
+	jq(document).ready(function() {
 	
-	var DataModel = Backbone.Model.extend({
+	var DynaTreeDataModel = Backbone.Model.extend({
 	    initialize: function(){
 	        function change_params(model, params){ 
 	            var real_params = new Array();
@@ -139,7 +140,7 @@
 	    }
 	});
 	
-	var Dynatree = Backbone.View.extend({
+	var DynaTreeView = Backbone.View.extend({
 	    initialize:function(){
 	        _.bindAll(this, "render");
 	        this.model.bind("change:children", this.render);
@@ -148,9 +149,12 @@
 	        this.model.bind("change:filter", this.render);
 	    },
 	    render:function(model){
-	        var tree = this.el.dynatree("getTree");
-	
-	        if(tree.getRoot === undefined){
+	    	var el = $(this.el);
+	    	var tree = {};
+	    	try {
+	    		tree = el.dynatree("getTree");
+	    	} catch(err) {
+	    		// tree is not initialized, initialize it	    		
 	            function onQuerySelect(selected, node){
 	                if(!this.isUserEvent()){
 	                    return true;
@@ -166,22 +170,26 @@
 	                return false;
 	            }
 	
-	            var params = _.extend({}, 
-	                                  this.model.get("params"), 
-	                                  {children: this.model.getChildren(),
-	                                   onQuerySelect: onQuerySelect});
-	            this.el.dynatree(params);
-	            tree = this.el.dynatree("getTree");
-	        }else{
+	            var params = _.extend(
+	            		{}, 
+	                    this.model.get("params"), 
+	                    { children: this.model.getChildren(),
+	                      onQuerySelect: onQuerySelect}
+	            );
+	            el.dynatree(params);		            
+	            tree = el.dynatree("getTree");
+	            
+	        } else {
 	            tree.options.children = this.model.getChildren();
 	            tree.reload();
 	        }
-	        // We are faking here thet we are outside of the select event
+	        // We are faking here that we are outside of the select event
 	        tree.phase = "idle"; 
+
 	        _.each(this.model.get("selected"), function(key){
-	            tree.getNodeByKey(key).select();
-	        });
-	    }
+	            tree.getNodeByKey(key).select();	    		
+		        });	    		
+	    }	    
 	});
 	
 	var HiddenForm = Backbone.View.extend({
@@ -237,18 +245,20 @@
 	        }
 	    },
 	    render: function(){
+	    	var jqel = $(this.el);
 	        if(this.model.get("sparse")){
-	            this.el.find(".sparse").text("Expand");
+	            jqel.find(".sparse").text("Expand");
 	        }else{
-	            this.el.find(".sparse").text("Sparse");
+	            jqel.find(".sparse").text("Sparse");
 	        }
 	    }
 	});
 	
 	var FlatListDisplay = Backbone.View.extend({
 	    initialize: function(){
+	    	var jqel = $(this.el);
 	        _.bindAll(this, "render", "delete_elem");
-	        this.template = _.template(this.el.find(".flatlist-template").html());
+	        this.template = _.template(jqel.find(".flatlist-template").html());
 	        this.model.bind("change:selected", this.render);
 	        this.model.bind("change:children", this.render);
 	    },
@@ -260,8 +270,8 @@
 	        var ordered_keys = this.getOrderedKeys();
 	        var model = this.model;
 	        var template = this.template;
-	        var el = this.el;
-	        var flatlist_items = this.el.find(".flatlist-item");
+	        var el = $(this.el);
+	        var flatlist_items = el.find(".flatlist-item");
 	        _.each(flatlist_items.splice(1, flatlist_items.length), function(item){
 	            jq(item).remove();
 	        });
@@ -300,18 +310,17 @@
 	    }
 	});
 	
-	jq(document).ready(function() {
 	    jq('.dynatree-atwidget').each(function () {
-		// get parameters 
-		var jqthis = jq(this);
-	        var datamodel = new DataModel({url: jqthis.find(".dynatree_ajax_vocabulary").text(),
+	    	// get parameters 
+	    	var jqthis = jq(this);
+	        var datamodel = new DynaTreeDataModel({url: jqthis.find(".dynatree_ajax_vocabulary").text(),
 	                                       selected: _.filter(jqthis.find('input.selected').val().split('|'),
 	                                                          function(elem){return elem;}),
 	                                       params: jqthis.find('.dynatree_parameters').text(),
 	                                       name: jqthis.find('input.selected').attr('id')
 	                                     });
 	        jqthis.data('collective.dynatree', datamodel);
-	        var tree = new Dynatree({el: jqthis.find('.collective-dynatree-tree'),
+	        var tree = new DynaTreeView({el: jqthis.find('.collective-dynatree-tree'),
 	                                 model: datamodel});
 	        var hiddeninput = new HiddenForm({el: jqthis.find(".hiddeninput"),
 	                                    model: datamodel});
@@ -327,6 +336,7 @@
 	            var flatlist = new FlatListDisplay({el: jqthis.find(".flatlist_container"),
 	                                                model: datamodel});
 	        }
+	        
 	    });
 	});
 

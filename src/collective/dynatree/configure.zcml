@@ -6,7 +6,7 @@
  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
  i18n_domain="collective.dynatree">
 
-    <include package="collective.js.jqueryui" />
+    <includeDependencies package="." />
 
     <genericsetup:registerProfile
      name="default"

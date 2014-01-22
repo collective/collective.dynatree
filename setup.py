@@ -25,7 +25,7 @@ setup(name='collective.dynatree',
       url=u'https://github.com/collective/collective.dynatree',
       license='GNU General Public Licence',
       packages=find_packages('src'),
-      package_dir = {'': 'src'},
+      package_dir={'': 'src'},
       namespace_packages=['collective'],
       include_package_data=True,
       zip_safe=False,
@@ -35,13 +35,16 @@ setup(name='collective.dynatree',
           'Plone',
           'plone.behavior',
           'collective.js.jqueryui',
-          'z3c.json',          
+          'collective.js.backbone',
+          'z3c.json',
       ],
-      extras_require = dict(
+      extras_require=dict(
           example=['Products.ATVocabularyManager'],
+          test=['ipdb', 'interlude', ],
       ),
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone
-      """      
+      """,
+
 )

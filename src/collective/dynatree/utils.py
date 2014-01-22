@@ -1,14 +1,14 @@
-from zope.schema.interfaces import ITokenizedTerm
-
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
+from zope.schema.interfaces import ITokenizedTerm
+from zope.schema.interfaces import ITreeVocabulary
 
-def dict2dynatree(input_dict, selected, only_leaves, show_key=False):
+def dict2dynatree(source, selected, only_leaves, show_key=False):
     """
     Recursively parse the dictionary as we get it from the IVocabulary,
     and transform it to a a dictionary as needed for dynatree.
 
-    input_dict:
+    source:
         dictionary as provided by getVocabularyDict from
         Products.ATVocabularyManager or a zope.schema.TreeVocabulary
     selected:
@@ -16,16 +16,21 @@ def dict2dynatree(input_dict, selected, only_leaves, show_key=False):
     only_leaves:
         Whether only leaves should be selectable or also tree nodes
     """
-    if not input_dict:
+    if not source:
         return []
+
+    if not ITreeVocabulary.providedBy(source) and not isinstance(source, dict):
+        raise ValueError("Source must be dict or treevocabulary")
+
     retval = []
-    for key in input_dict.keys():
+    for key in source:
         if ITokenizedTerm.providedBy(key):
             title = key.title or key.value
-            children = dict2dynatree(input_dict[key], selected, only_leaves, show_key)
+            children = dict2dynatree(source[key], selected, only_leaves,
+                                     show_key)
             key = key.token
         else:
-            title, children = input_dict[key]
+            title, children = source[key]
             children = dict2dynatree(children, selected, only_leaves, show_key)
 
         new_item = {}  # we have to have boolItems
@@ -38,11 +43,10 @@ def dict2dynatree(input_dict, selected, only_leaves, show_key=False):
         new_item['isFolder'] = bool(children)
         new_item['hideCheckbox'] = bool(children) and only_leaves
         new_item['expand'] = (key in selected or
-                            isSomethingSelectedInChildren(children,
+                              isSomethingSelectedInChildren(children,
                                                             selected))
         retval.append(new_item)
     return retval
-
 
 def isSomethingSelectedInChildren(children, selected):
     return bool(set([_['key'] for _ in children]).intersection(selected)) \
