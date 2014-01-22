@@ -2,9 +2,9 @@
 <vdex xmlns="http://www.imsglobal.org/xsd/imsvdex_v1p0"
       orderSignificant="true">
       <vocabName>
-          <langstring language="de">Disposition</langstring>
-          <langstring language="en">Disposition</langstring>
-          <langstring language="fr">Disposition</langstring>
+          <langstring language="de">ch.scb.disposition</langstring>
+          <langstring language="en">ch.scb.disposition</langstring>
+          <langstring language="fr">ch.scb.disposition</langstring>
      </vocabName>
      <vocabIdentifier>ch.scb.disposition</vocabIdentifier>
 

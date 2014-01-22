@@ -1,4 +1,4 @@
 <?xml version="1.0"?>
 <object name="portal_vocabularies" meta_type="ATVocabularyManager">
-	<object name="disposition.vdex" />
+	<object name="ch.scb.disposition" />
 </object>

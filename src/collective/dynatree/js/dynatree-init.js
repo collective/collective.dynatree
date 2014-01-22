@@ -149,12 +149,14 @@ _.templateSettings = {
 	        this.model.bind("change:filter", this.render);
 	    },
 	    render:function(model){
+	    	var was_initialized = true;
 	    	var el = $(this.el);
 	    	var tree = {};
 	    	try {
 	    		tree = el.dynatree("getTree");
 	    	} catch(err) {
-	    		// tree is not initialized, initialize it	    		
+	    		// tree is not initialized, initialize it	 
+	    		was_initialized = false;
 	            function onQuerySelect(selected, node){
 	                if(!this.isUserEvent()){
 	                    return true;
@@ -179,7 +181,9 @@ _.templateSettings = {
 	            el.dynatree(params);		            
 	            tree = el.dynatree("getTree");
 	            
-	        } else {
+	        } 
+	    	
+	    	if (was_initialized) {
 	            tree.options.children = this.model.getChildren();
 	            tree.reload();
 	        }
