@@ -6,6 +6,9 @@
  xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
  i18n_domain="collective.dynatree">
 
+
+	<includeDependencies package="." />
+
     <genericsetup:registerProfile
      name="default"
      title="jquery.dynatree Plone Integration"
