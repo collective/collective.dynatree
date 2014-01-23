@@ -6,6 +6,7 @@ from Products.Five.browser import BrowserView
 from utils import dict2dynatree
 from z3c.form.widget import SequenceWidget
 from z3c.json.converter import JSONWriter
+from zope.schema.interfaces import IList
 from zope.schema.interfaces import IVocabularyFactory
 
 import interfaces
@@ -35,13 +36,17 @@ class FieldVocabDynatreeJsonView(BrowserView):
                     if field is not None:
                         break
 
-        vname = field.vocabularyName
+        if IList.providedBy(field):
+            vname = field.value_type.vocabularyName
+        else:
+            vname = field.vocabularyName
         factory = zope.component.getUtility(IVocabularyFactory, vname)
         tree = factory(context)
         # XXX: "selected" is not set in input.pt, so does it make sense to check
         # for it here? Only if this json view is called elsewhere, which
         # doesn't seem to be the case...
         selected = self.request.get('selected', '').split('|')
+
         tree = dict2dynatree(
             self.context,
             tree,
@@ -52,7 +57,8 @@ class FieldVocabDynatreeJsonView(BrowserView):
         return JSONWriter().write(tree)
 
 
-class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
+# class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
+class DynatreeWidget(SequenceWidget):
     """ A text field widget with a dynatree javascript vocabulary to determine
         the value.
     """
@@ -63,11 +69,34 @@ class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
     autoCollapse = False
     leafsOnly = True
     showKey = False
-    atvocabulary = None
 
     @property
     def widget_value(self):
         return self.request.get(self.__name__, '|'.join(v for v in self.value))
+
+    def extract(self, default=z3c.form.interfaces.NO_VALUE):
+        """See z3c.form.interfaces.IWidget."""
+        if self.name not in self.request:
+            return []
+        value = self.request.get(self.name, default)
+        if not isinstance(value, basestring):
+            raise ValueError('Expected string, got %s' % type(value))
+        if value == default:
+            return value
+        if IList.providedBy(self.field):
+            value = value.split('|')
+            # do some kind of validation, at least only use existing values
+            for token in value:
+                try:
+                    self.terms.getTermByToken(token)
+                except LookupError:
+                    return default
+        else:
+            try:
+                self.terms.getTermByToken(token)
+            except LookupError:
+                return default
+        return value
 
     @property
     def field_name(self):

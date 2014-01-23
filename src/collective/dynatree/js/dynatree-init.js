@@ -9,13 +9,19 @@ _.templateSettings = {
 	    initialize: function(){
 	        function change_params(model, params){ 
 	            var real_params = new Array();
-	            _.each(params.split('/'), function(param){
+	            _.each(params.split('/'), function(param) {
 	                var pair = param.split(',');
-		        var value = pair[1].replace(/^\s+|\s+$/g, "");
-	                if (!isNaN(value)) { value = parseInt(value); };
-	                if (value=='True') { value = true; };
-	                if (value=='False') { value = false; };		
-		        real_params[pair[0].replace(/^\s+|\s+$/g, "")] = value;
+	                var value = pair[1].replace(/^\s+|\s+$/g, "");
+	                if (!isNaN(value)) { 
+	                    value = parseInt(value); 
+	                };
+	                if (value=='True') { 
+	                    value = true; 
+	                };
+	                if (value=='False') { 
+	                    value = false; 
+	                };		
+	                real_params[pair[0].replace(/^\s+|\s+$/g, "")] = value;
 	            });
 	            model.set({params: real_params}, {silent: true});
 	        }
@@ -317,28 +323,37 @@ _.templateSettings = {
 	    jq('.dynatree-atwidget').each(function () {
 	    	// get parameters 
 	    	var jqthis = jq(this);
-	        var datamodel = new DynaTreeDataModel({url: jqthis.find(".dynatree_ajax_vocabulary").text(),
-	                                       selected: _.filter(jqthis.find('input.selected').val().split('|'),
-	                                                          function(elem){return elem;}),
-	                                       params: jqthis.find('.dynatree_parameters').text(),
-	                                       name: jqthis.find('input.selected').attr('id')
-	                                     });
+	        var datamodel = new DynaTreeDataModel({
+                url:      jqthis.find(".dynatree_ajax_vocabulary").text(),
+                selected: jqthis.find('input.selected').val().split('|'),
+                params:   jqthis.find('.dynatree_parameters').text(),
+                name:     jqthis.find('input.selected').attr('id')
+	        });
 	        jqthis.data('collective.dynatree', datamodel);
-	        var tree = new DynaTreeView({el: jqthis.find('.collective-dynatree-tree'),
-	                                 model: datamodel});
-	        var hiddeninput = new HiddenForm({el: jqthis.find(".hiddeninput"),
-	                                    model: datamodel});
+	        var tree = new DynaTreeView({
+	            el:    jqthis.find('.collective-dynatree-tree'),
+	            model: datamodel
+	        });
+	        var hiddeninput = new HiddenForm({
+	            el:    jqthis.find(".hiddeninput"),
+	            model: datamodel});
 	        if(datamodel.get("params").filter){            
-	            var filter = new Filter({el: jqthis.find(".dynatree_filter"),
-	                                     model: datamodel});
+	            var filter = new Filter({
+	                el:    jqthis.find(".dynatree_filter"),
+	                model: datamodel
+	            });
 	        }
 	        if(datamodel.get("params").sparse){
-	            var various = new VariousUIElements({el: jqthis.find(".ui_controls"),
-	                                                 model: datamodel});
+	            var various = new VariousUIElements({
+	                el: jqthis.find(".ui_controls"),
+	                model: datamodel
+	            });
 	        }
 	        if(datamodel.get("params").flatlist){
-	            var flatlist = new FlatListDisplay({el: jqthis.find(".flatlist_container"),
-	                                                model: datamodel});
+	            var flatlist = new FlatListDisplay({
+	                el: jqthis.find(".flatlist_container"),
+	                model: datamodel
+	            });
 	        }
 	        
 	    });

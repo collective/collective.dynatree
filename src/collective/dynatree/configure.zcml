@@ -50,7 +50,7 @@
         mode="input"
         widget=".interfaces.IDynatreeWidget"        
         layer="z3c.form.interfaces.IFormLayer"
-        template="input.pt" 
+        template="widget.pt" 
         />
 
     <browser:page
