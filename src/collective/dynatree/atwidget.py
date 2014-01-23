@@ -36,7 +36,7 @@ class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
     _properties.update({'macro' : 'at_widget_dynatree',
                         'selectMode': 1,  # 1=single, 2=multi, 3=multi-hier(?)
-                        'minExpandLevel': 0,
+                        'minExpandLevel': 1,
                         'rootVisible': False,
                         'autoCollapse': False,
                         'leafsOnly': False,

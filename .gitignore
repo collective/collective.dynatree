@@ -12,3 +12,4 @@ src/*.egg-info
 dist
 lib/
 include/
+local/

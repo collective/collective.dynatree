@@ -208,7 +208,7 @@ _.templateSettings = {
 	                           function(a,b){return a + '|' + b;}
 	                          );
 	        }
-	        this.el.val(val);
+	        $(this.el).val(val);
 	    }
 	});
 	
@@ -221,7 +221,7 @@ _.templateSettings = {
 	        'keyup input': "updateFilter"
 	    },
 	    updateFilter: function(){
-	        var filter = this.el.find('.filter').val();
+	        var filter = $(this.el).find('.filter').val();
 	        this.model.set({'filter': filter});
 	        if(filter && this.model.get("sparse")){
 	            this.model.set({sparse: false});
@@ -229,7 +229,7 @@ _.templateSettings = {
 	        return false;
 	    },
 	    render: function(){
-	        this.el.find('input').val(this.model.get("filter"));
+	        $(this.el).find('input').val(this.model.get("filter"));
 	    }
 	    
 	});

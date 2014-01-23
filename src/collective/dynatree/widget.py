@@ -42,15 +42,14 @@ class FieldVocabDynatreeJsonView(BrowserView):
         # for it here? Only if this json view is called elsewhere, which
         # doesn't seem to be the case...
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(
-            dict2dynatree(
-                self.context,
-                tree,
-                selected,
-                True,
-                False
-            )
+        tree = dict2dynatree(
+            self.context,
+            tree,
+            selected,
+            True,
+            False
         )
+        return JSONWriter().write(tree)
 
 
 class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
@@ -60,7 +59,7 @@ class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
     zope.interface.implementsOnly(interfaces.IDynatreeWidget)
     klass = u'dynatree-widget'
     selectMode = 1
-    minExpandLevel = 0
+    minExpandLevel = 1
     autoCollapse = False
     leafsOnly = True
     showKey = False
