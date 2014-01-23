@@ -16,21 +16,26 @@ class DynatreeWidgetMacros(BrowserView):
 
 
 class ATFieldVocabDynatreeJsonView(BrowserView):
-    
+
     def __call__(self):
         fieldname = self.request.get('fieldname')
         field = self.context.Schema()[fieldname]
-        tree = lookupVocabulary(self.context, field)        
+        tree = lookupVocabulary(self.context, field)
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(dict2dynatree(tree, 
-                                                selected, 
-                                                field.widget.leafsOnly,
-                                                field.widget.showKey))
-    
+        return JSONWriter().write(
+            dict2dynatree(
+                self.context,
+                tree,
+                selected,
+                field.widget.leafsOnly,
+                field.widget.showKey
+            )
+        )
+
 class DynatreeWidget(TypesWidget):
     _properties = TypesWidget._properties.copy()
     _properties.update({'macro' : 'at_widget_dynatree',
-                        'selectMode': 1, # 1=single, 2=multi, 3=multi-hier(?)                      
+                        'selectMode': 1,  # 1=single, 2=multi, 3=multi-hier(?)
                         'minExpandLevel': 0,
                         'rootVisible': False,
                         'autoCollapse': False,
@@ -40,29 +45,29 @@ class DynatreeWidget(TypesWidget):
                         'flatlist': False,
                         'showKey': False})
 
-    
+
     security = ClassSecurityInfo()
-    
+
     security.declarePublic('dynatreeParameters')
     def dynatreeParameters(self, instance, field):
         if getattr(self, 'rootVisible') == True \
                and getattr(self, 'minExpandLevel') == 0 \
                and field.get(instance):
             self.minExpandLevel = 1
-            
-        result = [('%s,%s' % (_, getattr(self, _))) 
-                  for _ in ['selectMode', 'minExpandLevel', 'rootVisible', 
+
+        result = [('%s,%s' % (_, getattr(self, _)))
+                  for _ in ['selectMode', 'minExpandLevel', 'rootVisible',
                             'autoCollapse', 'sparse', 'flatlist']]
         result.append('title,%s' % self.label)
         return '/'.join(result)
-    
+
     security.declarePublic('dynatreeValue')
     def dynatreeValue(self, value):
         if isinstance(value, basestring):
             return value
         if isinstance(value, (tuple, list)):
             return '|'.join(value)
-        return ''     
+        return ''
 
     security.declarePublic('vocabLookup')
     def vocabLookup(self, instance, field, value):
@@ -81,7 +86,7 @@ class DynatreeWidget(TypesWidget):
         if result is None:
              return u'NOT FOUND'
         return result
-        
+
     security.declarePublic('process_form')
     def process_form(self, instance, field, form, empty_marker=None,
                      emptyReturnsMarker=False, validating=True):

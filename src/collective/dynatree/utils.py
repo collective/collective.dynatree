@@ -1,9 +1,10 @@
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
+from zope.i18n import translate
 from zope.schema.interfaces import ITokenizedTerm
 from zope.schema.interfaces import ITreeVocabulary
 
-def dict2dynatree(source, selected, only_leaves, show_key=False):
+def dict2dynatree(context, source, selected, only_leaves, show_key=False):
     """
     Recursively parse the dictionary as we get it from the IVocabulary,
     and transform it to a a dictionary as needed for dynatree.
@@ -25,7 +26,10 @@ def dict2dynatree(source, selected, only_leaves, show_key=False):
     retval = []
     for key in source:
         if ITokenizedTerm.providedBy(key):
-            title = key.title or key.value
+            if isinstance(key.title, Message):
+                title = translate(key.title, context=context)
+            else:
+                title = key.title or key.value
             children = dict2dynatree(source[key], selected, only_leaves,
                                      show_key)
             key = key.token

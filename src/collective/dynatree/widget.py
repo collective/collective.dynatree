@@ -1,21 +1,18 @@
-import zope.component
-import zope.interface
-from zope.schema.interfaces import IVocabularyFactory
-
 from Acquisition import aq_inner
-
-import z3c.form
-from z3c.form.widget import SequenceWidget
-from z3c.json.converter import JSONWriter
-
 from plone.autoform.interfaces import IFormFieldProvider
 from plone.behavior.interfaces import IBehaviorAssignable
 from plone.dexterity.interfaces import IDexterityFTI
-
 from Products.Five.browser import BrowserView
-
 from utils import dict2dynatree
+from z3c.form.widget import SequenceWidget
+from z3c.json.converter import JSONWriter
+from zope.schema.interfaces import IVocabularyFactory
+
 import interfaces
+import z3c.form
+import zope.component
+import zope.interface
+
 
 class FieldVocabDynatreeJsonView(BrowserView):
 
@@ -23,7 +20,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
         context = aq_inner(self.context)
         fieldname = self.request.get('fieldname')
         portal_type = self.request.get('portal_type')
-        
+
         fti = zope.component.getUtility(IDexterityFTI, name=portal_type)
         schema = fti.lookupSchema()
 
@@ -45,11 +42,19 @@ class FieldVocabDynatreeJsonView(BrowserView):
         # for it here? Only if this json view is called elsewhere, which
         # doesn't seem to be the case...
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(dict2dynatree(tree, selected, True, False))
+        return JSONWriter().write(
+            dict2dynatree(
+                self.context,
+                tree,
+                selected,
+                True,
+                False
+            )
+        )
 
 
 class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
-    """ A text field widget with a dynatree javascript vocabulary to determine 
+    """ A text field widget with a dynatree javascript vocabulary to determine
         the value.
     """
     zope.interface.implementsOnly(interfaces.IDynatreeWidget)
@@ -90,6 +95,3 @@ def DynatreeFieldWidget(field, request):
     """ IFieldWidget factory for DynatreeWidget
     """
     return z3c.form.widget.FieldWidget(field, DynatreeWidget(request))
-
-
-
