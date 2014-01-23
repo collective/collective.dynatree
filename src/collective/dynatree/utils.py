@@ -30,12 +30,22 @@ def dict2dynatree(context, source, selected, only_leaves, show_key=False):
                 title = translate(key.title, context=context)
             else:
                 title = key.title or key.value
-            children = dict2dynatree(source[key], selected, only_leaves,
-                                     show_key)
+            children = dict2dynatree(
+                source[key],
+                selected,
+                only_leaves,
+                show_key
+            )
             key = key.token
-        else:
+        else:  # dict
             title, children = source[key]
-            children = dict2dynatree(children, selected, only_leaves, show_key)
+            children = dict2dynatree(
+                context,
+                children,
+                selected,
+                only_leaves,
+                show_key
+            )
 
         new_item = {}  # we have to have boolItems
         if show_key:
