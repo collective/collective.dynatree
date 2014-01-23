@@ -23,7 +23,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
         context = aq_inner(self.context)
         fieldname = self.request.get('fieldname')
         portal_type = self.request.get('portal_type')
-        
+
         fti = zope.component.getUtility(IDexterityFTI, name=portal_type)
         schema = fti.lookupSchema()
 
@@ -49,14 +49,13 @@ class FieldVocabDynatreeJsonView(BrowserView):
 
 
 class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
-    """ A text field widget with a dynatree javascript vocabulary to determine 
+    """ A text field widget with a dynatree javascript vocabulary to determine
         the value.
     """
     zope.interface.implementsOnly(interfaces.IDynatreeWidget)
     klass = u'dynatree-widget'
     selectMode = 1
     minExpandLevel = 0
-    rootVisible = False
     autoCollapse = False
     leafsOnly = True
     showKey = False
@@ -78,7 +77,6 @@ class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
         result = [('%s,%s' % (parameter, getattr(self, parameter)))
                   for parameter in ['selectMode',
                                     'minExpandLevel',
-                                    'rootVisible',
                                     'autoCollapse']]
         result.append('title,%s' % self.label)
         return '/'.join(result)
