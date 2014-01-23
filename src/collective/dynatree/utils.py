@@ -1,6 +1,7 @@
 from Products.Archetypes.interfaces import IVocabulary
 from Products.Archetypes.utils import OrderedDict
 from zope.i18n import translate
+from zope.i18nmessageid import Message
 from zope.schema.interfaces import ITokenizedTerm
 from zope.schema.interfaces import ITreeVocabulary
 
