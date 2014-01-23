@@ -7,6 +7,18 @@ from zope.publisher.interfaces.browser import IBrowserRequest
 from zope.schema.interfaces import ITokenizedTerm
 from zope.schema.interfaces import ITreeVocabulary
 
+def _translate(context, msg):
+    """helper to translate a term if its a messageid
+    """
+    if not isinstance(msg, Message):
+        return msg
+    if not IBrowserRequest.providedBy(context):
+        context = aq_acquire(context, 'REQUEST')
+    msg = translate(msg, context=context).strip()
+    msg = '\n'.join([_.strip() for _ in msg.split('\n')])  # needed if vdex
+    return msg
+
+
 def dict2dynatree(context, source, selected, only_leaves, show_key=False):
     """
     Recursively parse the dictionary as we get it from the IVocabulary,
@@ -28,17 +40,18 @@ def dict2dynatree(context, source, selected, only_leaves, show_key=False):
 
     retval = []
     for key in source:
+        description = None
         if ITokenizedTerm.providedBy(key):
             subtree = source[key]
-            if isinstance(key.title, Message):
-                if not IBrowserRequest.providedBy(context):
-                    context = aq_acquire(context, 'REQUEST')
-                title = translate(key.title, context=context)
-            else:
-                title = key.title or key.value
+            title = key.title or key.value
+            if hasattr(key, 'description'):
+                description = key.description
             key = key.token
         else:  # dict
             title, subtree = source[key]
+
+        title = _translate(context, title)
+        description = _translate(context, description)
 
         children = dict2dynatree(
             context,
@@ -53,6 +66,8 @@ def dict2dynatree(context, source, selected, only_leaves, show_key=False):
 
         record = {}
         record['title'] = title
+        if description is not None:
+            record['tooltip'] = description
         record['key'] = key
         record['children'] = children
         record['select'] = key in selected
