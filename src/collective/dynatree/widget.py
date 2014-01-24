@@ -6,6 +6,8 @@ from Products.Five.browser import BrowserView
 from utils import dict2dynatree
 from z3c.form.widget import SequenceWidget
 from z3c.json.converter import JSONWriter
+
+from zope.dottedname.resolve import resolve
 from zope.schema.interfaces import IList
 from zope.schema.interfaces import IVocabularyFactory
 
@@ -13,7 +15,6 @@ import interfaces
 import z3c.form
 import zope.component
 import zope.interface
-
 
 class FieldVocabDynatreeJsonView(BrowserView):
 
@@ -24,18 +25,13 @@ class FieldVocabDynatreeJsonView(BrowserView):
 
         fti = zope.component.getUtility(IDexterityFTI, name=portal_type)
         schema = fti.lookupSchema()
-
         field = schema.get(fieldname)
         if field is None:
-            # The field might be defined in a behavior schema
-            behavior_assignable = IBehaviorAssignable(context, None)
-            for behavior_reg in behavior_assignable.enumerateBehaviors():
-                behavior_schema = IFormFieldProvider(behavior_reg.interface, None)
-                if behavior_schema is not None:
-                    field = behavior_schema.get(fieldname)
-                    if field is not None:
-                        break
-
+            for behaviorname in fti.behaviors:
+                behavior = resolve(behaviorname)
+                field = behavior.get(fieldname.split('.')[1])
+                if field is not None:
+                    break
         if IList.providedBy(field):
             vname = field.value_type.vocabularyName
         else:
