@@ -8,6 +8,6 @@
            type="hidden" name="" id="" value="" size="120"
            tal:attributes="name view/name;
                            id view/field_name;
-                           value view/widget_value;"
+                           value python:view.widget_value;"
            />
 </div>

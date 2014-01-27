@@ -1,0 +1,909 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vdex xmlns="http://www.imsglobal.org/xsd/imsvdex_v1p0"
+      orderSignificant="true">
+      <vocabName>
+          <langstring language="de">ch.scb.disposition</langstring>
+          <langstring language="en">ch.scb.disposition</langstring>
+          <langstring language="fr">ch.scb.disposition</langstring>
+     </vocabName>
+     <vocabIdentifier>ch.scb.disposition</vocabIdentifier>
+
+    <term>
+        <termIdentifier>1.</termIdentifier>
+        <caption>
+	        <langstring language="de">Nachschlagewerke/Lexika</langstring>
+	        <langstring language="en">Nachschlagewerke/Lexika</langstring>
+	        <langstring language="fr">Nachschlagewerke/Lexika</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>2.</termIdentifier>
+        <caption>
+	        <langstring language="de">Bibliothekskataloge/Bibliographien/Quellenverzeichnisse/Musikalien-Sammlungen</langstring>
+	        <langstring language="en">Bibliothekskataloge/Bibliographien/Quellenverzeichnisse/Musikalien-Sammlungen</langstring>
+	        <langstring language="fr">Bibliothekskataloge/Bibliographien/Quellenverzeichnisse/Musikalien-Sammlungen</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>3.</termIdentifier>
+        <caption>
+	        <langstring language="de">Quellenuntersuchungen</langstring>
+	        <langstring language="en">Quellenuntersuchungen</langstring>
+	        <langstring language="fr">Quellenuntersuchungen</langstring>
+        </caption>
+		
+		    <term>
+		        <termIdentifier>3.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Überblicke</langstring>
+			        <langstring language="en">Überblicke</langstring>
+			        <langstring language="fr">Überblicke</langstring>
+		        </caption>
+		    </term>
+			
+		    <term>
+		        <termIdentifier>3.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Einzelne Epochen</langstring>
+			        <langstring language="en">Einzelne Epochen</langstring>
+			        <langstring language="fr">Einzelne Epochen</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>3.2.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Mittelalter</langstring>
+					        <langstring language="en">Mittelalter</langstring>
+					        <langstring language="fr">Mittelalter</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>3.2.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Renaissance</langstring>
+					        <langstring language="en">Renaissance</langstring>
+					        <langstring language="fr">Renaissance</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>3.2.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Barock</langstring>
+					        <langstring language="en">Barock</langstring>
+					        <langstring language="fr">Barock</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>3.2.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Quellenuntersuchungen ab 1750</langstring>
+					        <langstring language="en">Quellenuntersuchungen ab 1750</langstring>
+					        <langstring language="fr">Quellenuntersuchungen ab 1750</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+			
+    </term>
+
+    <term>
+        <termIdentifier>4.</termIdentifier>
+        <caption>
+	        <langstring language="de">Notation</langstring>
+	        <langstring language="en">Notation</langstring>
+	        <langstring language="fr">Notation</langstring>
+        </caption>
+    </term>
+
+    <term>
+        <termIdentifier>5.</termIdentifier>
+        <caption>
+	        <langstring language="de">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
+	        <langstring language="en">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
+	        <langstring language="fr">Manuskript-Produktion / Notendruck / Editionspraxis</langstring>
+        </caption>
+    </term>
+
+    <term>
+        <termIdentifier>6.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musiklehre</langstring>
+	        <langstring language="en">Musiklehre</langstring>
+	        <langstring language="fr">Musiklehre</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>6.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Editionen</langstring>
+			        <langstring language="en">Editionen</langstring>
+			        <langstring language="fr">Editionen</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>6.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Untersuchungen</langstring>
+			        <langstring language="en">Untersuchungen</langstring>
+			        <langstring language="fr">Untersuchungen</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>7.</termIdentifier>
+        <caption>
+	        <langstring language="de">Satzlehre</langstring>
+	        <langstring language="en">Satzlehre</langstring>
+	        <langstring language="fr">Satzlehre</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>7.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Überblicke</langstring>
+			        <langstring language="en">Überblicke</langstring>
+			        <langstring language="fr">Überblicke</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>7.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Einzelne Epochen</langstring>
+			        <langstring language="en">Einzelne Epochen</langstring>
+			        <langstring language="fr">Einzelne Epochen</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>7.2.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Mittelalter</langstring>
+					        <langstring language="en">Mittelalter</langstring>
+					        <langstring language="fr">Mittelalter</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>7.2.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Renaissance</langstring>
+					        <langstring language="en">Renaissance</langstring>
+					        <langstring language="fr">Renaissance</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>7.2.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Barock</langstring>
+					        <langstring language="en">Barock</langstring>
+					        <langstring language="fr">Barock</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>7.2.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Musik ab 1750</langstring>
+					        <langstring language="en">Musik ab 1750</langstring>
+					        <langstring language="fr">Musik ab 1750</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>8.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musikgeschichte</langstring>
+	        <langstring language="en">Musikgeschichte</langstring>
+	        <langstring language="fr">Musikgeschichte</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>8.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Allgemeines und Überblicke</langstring>
+			        <langstring language="en">Allgemeines und Überblicke</langstring>
+			        <langstring language="fr">Allgemeines und Überblicke</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>8.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Einzelne Epochen</langstring>
+			        <langstring language="en">Einzelne Epochen</langstring>
+			        <langstring language="fr">Einzelne Epochen</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>8.2.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Mittelalter</langstring>
+					        <langstring language="en">Mittelalter</langstring>
+					        <langstring language="fr">Mittelalter</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>8.2.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Renaissance</langstring>
+					        <langstring language="en">Renaissance</langstring>
+					        <langstring language="fr">Renaissance</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>8.2.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Barock</langstring>
+					        <langstring language="en">Barock</langstring>
+					        <langstring language="fr">Barock</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>8.2.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Musikgeschichte ab 1750</langstring>
+					        <langstring language="en">Musikgeschichte ab 1750</langstring>
+					        <langstring language="fr">Musikgeschichte ab 1750</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+		    <term>
+		        <termIdentifier>8.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Einzelne Komponisten</langstring>
+			        <langstring language="en">Einzelne Komponisten</langstring>
+			        <langstring language="fr">Einzelne Komponisten</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>8.4.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Geschichte der Musikwissenschaft</langstring>
+			        <langstring language="en">Geschichte der Musikwissenschaft</langstring>
+			        <langstring language="fr">Geschichte der Musikwissenschaft</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>8.5.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Aussereuropäische Musikwissenschaft</langstring>
+			        <langstring language="en">Aussereuropäische Musikwissenschaft</langstring>
+			        <langstring language="fr">Aussereuropäische Musikwissenschaft</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>9.</termIdentifier>
+        <caption>
+	        <langstring language="de">Untersuchungen zu einzelnen Gattungen und Formen</langstring>
+	        <langstring language="en">Untersuchungen zu einzelnen Gattungen und Formen</langstring>
+	        <langstring language="fr">Untersuchungen zu einzelnen Gattungen und Formen</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>9.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Zusammenfassende Darstellungen</langstring>
+			        <langstring language="en">Zusammenfassende Darstellungen</langstring>
+			        <langstring language="fr">Zusammenfassende Darstellungen</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>9.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Mittelalter</langstring>
+			        <langstring language="en">Mittelalter</langstring>
+			        <langstring language="fr">Mittelalter</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>9.2.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Choral</langstring>
+					        <langstring language="en">Choral</langstring>
+					        <langstring language="fr">Choral</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.2.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Geistliches Spiel</langstring>
+					        <langstring language="en">Geistliches Spiel</langstring>
+					        <langstring language="fr">Geistliches Spiel</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.2.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Ausserliturgische und weltliche Einstimmigkeit</langstring>
+					        <langstring language="en">Ausserliturgische und weltliche Einstimmigkeit</langstring>
+					        <langstring language="fr">Ausserliturgische und weltliche Einstimmigkeit</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.2.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Mehrstimmigkeit</langstring>
+					        <langstring language="en">Mehrstimmigkeit</langstring>
+					        <langstring language="fr">Mehrstimmigkeit</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+		    <term>
+		        <termIdentifier>9.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Renaissance</langstring>
+			        <langstring language="en">Renaissance</langstring>
+			        <langstring language="fr">Renaissance</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>9.3.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Instrumentalformen</langstring>
+					        <langstring language="en">Instrumentalformen</langstring>
+					        <langstring language="fr">Instrumentalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.3.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Geistliches Spiel</langstring>
+					        <langstring language="en">Geistliches Spiel</langstring>
+					        <langstring language="fr">Geistliches Spiel</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.3.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Lied- und andere Vokalformen</langstring>
+					        <langstring language="en">Lied- und andere Vokalformen</langstring>
+					        <langstring language="fr">Lied- und andere Vokalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.3.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Messe und Mess-Sätze</langstring>
+					        <langstring language="en">Messe und Mess-Sätze</langstring>
+					        <langstring language="fr">Messe und Mess-Sätze</langstring>
+				        </caption>
+				    </term>
+		
+				    <term>
+				        <termIdentifier>9.3.5.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Motette</langstring>
+					        <langstring language="en">Motette</langstring>
+					        <langstring language="fr">Motette</langstring>
+				        </caption>
+				    </term>
+		
+				    <term>
+				        <termIdentifier>9.3.6.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Passion. Biblische Historie</langstring>
+					        <langstring language="en">Passion. Biblische Historie</langstring>
+					        <langstring language="fr">Passion. Biblische Historie</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+		    <term>
+		        <termIdentifier>9.4.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Barock</langstring>
+			        <langstring language="en">Barock</langstring>
+			        <langstring language="fr">Barock</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>9.4.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Instrumentalformen</langstring>
+					        <langstring language="en">Instrumentalformen</langstring>
+					        <langstring language="fr">Instrumentalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Kantate</langstring>
+					        <langstring language="en">Kantate</langstring>
+					        <langstring language="fr">Kantate</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Konzert</langstring>
+					        <langstring language="en">Konzert</langstring>
+					        <langstring language="fr">Konzert</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Lied- und andere Vokalformen</langstring>
+					        <langstring language="en">Lied- und andere Vokalformen</langstring>
+					        <langstring language="fr">Lied- und andere Vokalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.5.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Messe und Mess-Sätze</langstring>
+					        <langstring language="en">Messe und Mess-Sätze</langstring>
+					        <langstring language="fr">Messe und Mess-Sätze</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.6.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Oper</langstring>
+					        <langstring language="en">Oper</langstring>
+					        <langstring language="fr">Oper</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.7.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Oratorium, Passion</langstring>
+					        <langstring language="en">Oratorium, Passion</langstring>
+					        <langstring language="fr">Oratorium, Passion</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.8.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Sonate</langstring>
+					        <langstring language="en">Sonate</langstring>
+					        <langstring language="fr">Sonate</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.4.9.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Suite</langstring>
+					        <langstring language="en">Suite</langstring>
+					        <langstring language="fr">Suite</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+		    <term>
+		        <termIdentifier>9.5.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musik ab 1750</langstring>
+			        <langstring language="en">Musik ab 1750</langstring>
+			        <langstring language="fr">Musik ab 1750</langstring>
+		        </caption>
+
+				    <term>
+				        <termIdentifier>9.5.1.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Instrumentalformen</langstring>
+					        <langstring language="en">Instrumentalformen</langstring>
+					        <langstring language="fr">Instrumentalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.2.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Lied- und andere Vokalformen</langstring>
+					        <langstring language="en">Lied- und andere Vokalformen</langstring>
+					        <langstring language="fr">Lied- und andere Vokalformen</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.3.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Konzert</langstring>
+					        <langstring language="en">Konzert</langstring>
+					        <langstring language="fr">Konzert</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.4.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Oper</langstring>
+					        <langstring language="en">Oper</langstring>
+					        <langstring language="fr">Oper</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.5.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Oratorium</langstring>
+					        <langstring language="en">Oratorium</langstring>
+					        <langstring language="fr">Oratorium</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.6.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Sonate</langstring>
+					        <langstring language="en">Sonate</langstring>
+					        <langstring language="fr">Sonate</langstring>
+				        </caption>
+				    </term>
+
+				    <term>
+				        <termIdentifier>9.5.7.</termIdentifier>
+				        <caption>
+					        <langstring language="de">Symphonie</langstring>
+					        <langstring language="en">Symphonie</langstring>
+					        <langstring language="fr">Symphonie</langstring>
+				        </caption>
+				    </term>
+
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>10.</termIdentifier>
+        <caption>
+	        <langstring language="de">Tanz</langstring>
+	        <langstring language="en">Tanz</langstring>
+	        <langstring language="fr">Tanz</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>11.</termIdentifier>
+        <caption>
+	        <langstring language="de">Aufführungspraxis</langstring>
+	        <langstring language="en">Aufführungspraxis</langstring>
+	        <langstring language="fr">Aufführungspraxis</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>11.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Allgemeines</langstring>
+			        <langstring language="en">Allgemeines</langstring>
+			        <langstring language="fr">Allgemeines</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Akzidentien/Verzierungen</langstring>
+			        <langstring language="en">Akzidentien/Verzierungen</langstring>
+			        <langstring language="fr">Akzidentien/Verzierungen</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Stimmung</langstring>
+			        <langstring language="en">Stimmung</langstring>
+			        <langstring language="fr">Stimmung</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.4.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Besetzungspraxis/Instrumentation/Dynamik</langstring>
+			        <langstring language="en">Besetzungspraxis/Instrumentation/Dynamik</langstring>
+			        <langstring language="fr">Besetzungspraxis/Instrumentation/Dynamik</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.5.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Improvisation</langstring>
+			        <langstring language="en">Improvisation</langstring>
+			        <langstring language="fr">Improvisation</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.6.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Gestik, Affekt</langstring>
+			        <langstring language="en">Gestik, Affekt</langstring>
+			        <langstring language="fr">Gestik, Affekt</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>11.7.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Artikulation</langstring>
+			        <langstring language="en">Artikulation</langstring>
+			        <langstring language="fr">Artikulation</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>12.</termIdentifier>
+        <caption>
+	        <langstring language="de">Rhythmus/Takt/Tempo</langstring>
+	        <langstring language="en">Rhythmus/Takt/Tempo</langstring>
+	        <langstring language="fr">Rhythmus/Takt/Tempo</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>13.</termIdentifier>
+        <caption>
+	        <langstring language="de">Gesang</langstring>
+	        <langstring language="en">Gesang</langstring>
+	        <langstring language="fr">Gesang</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>14.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musikinstrumente: Bau und Spiel</langstring>
+	        <langstring language="en">Musikinstrumente: Bau und Spiel</langstring>
+	        <langstring language="fr">Musikinstrumente: Bau und Spiel</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>14.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Allgemeines und Überblicke</langstring>
+			        <langstring language="en">Allgemeines und Überblicke</langstring>
+			        <langstring language="fr">Allgemeines und Überblicke</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>14.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Instrumental-Ensembles</langstring>
+			        <langstring language="en">Instrumental-Ensembles</langstring>
+			        <langstring language="fr">Instrumental-Ensembles</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>14.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Instrumenten-Sammlungen</langstring>
+			        <langstring language="en">Instrumenten-Sammlungen</langstring>
+			        <langstring language="fr">Instrumenten-Sammlungen</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>14.4.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Einzelne Instrumente</langstring>
+			        <langstring language="en">Einzelne Instrumente</langstring>
+			        <langstring language="fr">Einzelne Instrumente</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>15.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musik für bestimmte Instrumente</langstring>
+	        <langstring language="en">Musik für bestimmte Instrumente</langstring>
+	        <langstring language="fr">Musik für bestimmte Instrumente</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>15.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Allgemeines und Überblicke</langstring>
+			        <langstring language="en">Allgemeines und Überblicke</langstring>
+			        <langstring language="fr">Allgemeines und Überblicke</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>15.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Ensemblemusik</langstring>
+			        <langstring language="en">Ensemblemusik</langstring>
+			        <langstring language="fr">Ensemblemusik</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>15.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musik für einzelne Instrumente</langstring>
+			        <langstring language="en">Musik für einzelne Instrumente</langstring>
+			        <langstring language="fr">Musik für einzelne Instrumente</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>16.</termIdentifier>
+        <caption>
+	        <langstring language="de">Ikonographie</langstring>
+	        <langstring language="en">Ikonographie</langstring>
+	        <langstring language="fr">Ikonographie</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>17.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musik und Sprache. Musik und Dichtung</langstring>
+	        <langstring language="en">Musik und Sprache. Musik und Dichtung</langstring>
+	        <langstring language="fr">Musik und Sprache. Musik und Dichtung</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>18.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musikanschauung</langstring>
+	        <langstring language="en">Musikanschauung</langstring>
+	        <langstring language="fr">Musikanschauung</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>19.</termIdentifier>
+        <caption>
+	        <langstring language="de">Musik und Gesellschaft</langstring>
+	        <langstring language="en">Musik und Gesellschaft</langstring>
+	        <langstring language="fr">Musik und Gesellschaft</langstring>
+        </caption>
+
+		    <term>
+		        <termIdentifier>19.1.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musik und Gesellschaft</langstring>
+			        <langstring language="en">Musik und Gesellschaft</langstring>
+			        <langstring language="fr">Musik und Gesellschaft</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>19.2.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musikleben</langstring>
+			        <langstring language="en">Musikleben</langstring>
+			        <langstring language="fr">Musikleben</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>19.3.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musik und Repräsentation</langstring>
+			        <langstring language="en">Musik und Repräsentation</langstring>
+			        <langstring language="fr">Musik und Repräsentation</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>19.4.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musik und Kirche / Musik und Gottesdienst</langstring>
+			        <langstring language="en">Musik und Kirche / Musik und Gottesdienst</langstring>
+			        <langstring language="fr">Musik und Kirche / Musik und Gottesdienst</langstring>
+		        </caption>
+		    </term>
+
+		    <term>
+		        <termIdentifier>19.5.</termIdentifier>
+		        <caption>
+			        <langstring language="de">Musikausbildung</langstring>
+			        <langstring language="en">Musikausbildung</langstring>
+			        <langstring language="fr">Musikausbildung</langstring>
+		        </caption>
+		    </term>
+
+    </term>
+
+
+
+    <term>
+        <termIdentifier>20.</termIdentifier>
+        <caption>
+	        <langstring language="de">Festschriften / Kongressberichte</langstring>
+	        <langstring language="en">Festschriften / Kongressberichte</langstring>
+	        <langstring language="fr">Festschriften / Kongressberichte</langstring>
+        </caption>
+    </term>
+
+
+
+    <term>
+        <termIdentifier>100.</termIdentifier>
+        <caption>
+	        <langstring language="de">Nicht zugeordnete Titel</langstring>
+	        <langstring language="en">Nicht zugeordnete Titel</langstring>
+	        <langstring language="fr">Nicht zugeordnete Titel</langstring>
+        </caption>
+    </term>
+
+
+
+</vdex>

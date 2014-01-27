@@ -4,9 +4,10 @@ eggs/
 develop-eggs/
 parts/
 src/*.egg-info
+devsrc/
 *.pyc
 .project
-.installed.cfg
+.*.cfg
 .pydevproject
 .tmp*
 dist

@@ -38,22 +38,16 @@ class FieldVocabDynatreeJsonView(BrowserView):
             vname = field.vocabularyName
         factory = zope.component.getUtility(IVocabularyFactory, vname)
         tree = factory(context)
-        # XXX: "selected" is not set in input.pt, so does it make sense to check
-        # for it here? Only if this json view is called elsewhere, which
-        # doesn't seem to be the case...
-        selected = self.request.get('selected', '').split('|')
-
         tree = dict2dynatree(
             self.context,
             tree,
-            selected,
+            [],  # selected not needed here, this is done at js side
             True,
             False
         )
         return JSONWriter().write(tree)
 
 
-# class DynatreeWidget(z3c.form.browser.widget.HTMLInputWidget, SequenceWidget):
 class DynatreeWidget(SequenceWidget):
     """ A text field widget with a dynatree javascript vocabulary to determine
         the value.
@@ -68,7 +62,17 @@ class DynatreeWidget(SequenceWidget):
 
     @property
     def widget_value(self):
-        return self.request.get(self.__name__, '|'.join(v for v in self.value))
+        # XXX figure out where to get actual value from, workaround follows:
+        # imo this should be self.value, but this is None. Reason?
+        # anyway needs refactoring
+        # also look if this method shall be named displayValue (z3cform style)
+        try:
+            value = self.field.get(self.context) or []
+        except AttributeError:
+            value = []
+        # end of workaround XXX
+        value = '|'.join([_ for _ in value])
+        return self.request.get(self.__name__, value)
 
     def extract(self, default=z3c.form.interfaces.NO_VALUE):
         """See z3c.form.interfaces.IWidget."""

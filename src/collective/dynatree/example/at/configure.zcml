@@ -9,7 +9,7 @@
 
     <genericsetup:registerProfile
      name="default"
-     title="jquery.dynatree EXAMPLE Content Types "
+     title="jquery.dynatree AT EXAMPLE Content Type "
      directory="profile"
      description="provides example types for archetypes widget"
      provides="Products.GenericSetup.interfaces.EXTENSION"

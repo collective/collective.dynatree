@@ -1,0 +1,34 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:cmf="http://namespaces.zope.org/cmf"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:vdex="http://namespaces.zope.org/vdex"
+    i18n_domain="collective.dynatree">
+
+  	<includeDependencies package="." />
+  
+  	<include package="Products.GenericSetup" file="meta.zcml" />
+    <genericsetup:registerProfile
+    	name="default"
+     	title="jquery.dynatree DX EXAMPLE Content Types "
+     	directory="profile"
+     	description="provides example types for dexterity widget"
+     	provides="Products.GenericSetup.interfaces.EXTENSION"
+    />
+
+    <plone:behavior
+        title="Dynatree DX EXAMPLE"
+        description="jquery.dynatree DX EXAMPLE behavior"
+        provides=".behavior.IDynatreeExampleBehavior"
+        for="plone.dexterity.interfaces.IDexterityContent"
+    />
+
+  	<include package="collective.vdexvocabulary" file="meta.zcml" />
+  	<include package="collective.vdexvocabulary" />  	
+  	<vdex:treevocabulary file="ch.scb.disposition.vdex" />
+
+</configure>
