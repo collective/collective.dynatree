@@ -8,11 +8,20 @@ from zope.interface import provider
 
 @provider(IFormFieldProvider)
 class IDynatreeExampleBehavior(model.Schema):
-    """Generic classifications for the media database
-    """
 
     widget(
         'multiple_leafs',
+        DynatreeWidget,
+        selectMode=2
+    )
+    single_leafs = schema.Choice(
+        title=u"Singe Leafs",
+        required=False,
+        vocabulary="ch.scb.disposition",
+    )
+
+    widget(
+        'single_leafs',
         DynatreeWidget,
         selectMode=2
     )

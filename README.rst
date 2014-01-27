@@ -2,10 +2,10 @@ Dynamic Tree-Widget for Plone
 =============================
 
 collective.dynatree provides the basic integration of the jQuery plugin
-`jquery.dynatree.js <http://wwwendt.de/tech/dynatree/index.html>`_ (at 
+`jquery.dynatree.js <http://wwwendt.de/tech/dynatree/index.html>`_ (at
 `google-code <http://code.google.com/p/dynatree/>`_).
 
-Optional it also provides a full-featured Archetypes Widget with full 
+Optional it also provides a full-featured Archetypes Widget with full
 ATVocabularyManager support, including hierachical VDEX-vocabularies.
 
 .. image:: http://bluedynamics.com/collective.dynatree.png
@@ -13,7 +13,7 @@ ATVocabularyManager support, including hierachical VDEX-vocabularies.
 Installation
 ============
 
-Just depend in your buildout on the egg ``collective.dynatree``. ZCML is loaded 
+Just depend in your buildout on the egg ``collective.dynatree``. ZCML is loaded
 automagically if z3c.autoinclude is available (default since Plone >=3.3).
 
 Install it as an addon in Plone control-panel or portal_setup.
@@ -25,21 +25,56 @@ Usage
 Plain Dynatree
 --------------
 
-This package only provides and registers the javascript in the site. Addon 
-developers can use it then in their own templates. Please refer to the 
-`original documentation <http://wwwendt.de/tech/dynatree/doc/dynatree-doc.html>`_ 
-for usage of ``jquery.dynatree.js``.  
+This package only provides and registers the javascript in the site. Addon
+developers can use it then in their own templates. Please refer to the
+`original documentation <http://wwwendt.de/tech/dynatree/doc/dynatree-doc.html>`_
+for usage of ``jquery.dynatree.js``.
+
+--------------------------
+Dexterity/ z3c.form Widget
+--------------------------
+
+The widget is meant to be used on a ``Choice`` (single selection) or on a
+``List`` (multi selection).
+
+Example dexterity behavior::
+
+    from plone.supermodel import model
+    from plone.autoform.directives import widget
+    from plone.autoform.interfaces import IFormFieldProvider
+    from collective.dynatree.dxwidget import DynatreeWidget
+    from zope import schema
+    from zope.interface import provider
+    
+    
+    @provider(IFormFieldProvider)
+    class IDynatreeExampleBehavior(model.Schema):
+    
+        widget(
+            'multiple_leafs',
+            DynatreeWidget,
+            selectMode=2
+        )
+        multiple_leafs = schema.List(
+            title=u"Multiple Leafs",
+            required=False,
+            value_type=schema.Choice(
+                vocabulary="ch.scb.disposition",
+            )
+        )
+
+For a complete example look at the code in folder
+``src/collective/dynatree/example/dx``.
+
 
 -----------------
 Archetypes Widget
 -----------------
 
-The widget is meant to be used on a ``StringField`` (single selection) or on a 
+The widget is meant to be used on a ``StringField`` (single selection) or on a
 ``LinesField`` (multi selection).
 
-Example
--------
-::
+Example::
 
     StringField('single_leafs',
         required=0,
@@ -58,57 +93,59 @@ Example
             selectMode=3,
             minExpandLevel=2),
     ),
-    
-Widget Parameters 
+
+For a complete example look at the code in folder
+``src/collective/dynatree/example/at``.
+
+
+Widget Parameters
 -----------------
 (additional to the usal suspects of TypesWidget)
 
 selectMode
     1=single, 2=multiple
-    
+
 minExpandLevel
     Number of levels which are not allowed to collapse; default=0.
 
-rootVisible
-    Wether a root node should be showed or not; default=False.
-
 autoCollapse
-    Automatically collapse all siblings, when a node is expanded; 
+    Automatically collapse all siblings, when a node is expanded;
     default=False.
 
 leafsOnly
-    Wether to select only leafs or allow also to select nodes with leafs; 
-    default=False.             
+    Wether to select only leafs or allow also to select nodes with leafs;
+    default=False.
 
 showKey
-   To show the terms key in front of the terms value set this to a format 
-   string like ``"%s: %s"``; default=None. You can put HTML inside, ie. 
+   To show the terms key in front of the terms value set this to a format
+   string like ``"%s: %s"``; default=None. You can put HTML inside, ie.
    ``<span class="dynatree-key">%s</span>&ndash;<span class="dynatree-value">%s<span>``.
    Thus you can apply custom formats.
-              
+
 -------------------
 Example-ContentType
 -------------------
 
-An example ContentType is provided, but disabled by default. To enable it add
-``collective.dynatree[example]`` to both, the eggs and zcml section in your 
-buildout. Rerun buildout, restart Plone and install the 
-``jquery.dynatree EXAMPLE Content Types`` as an add-on product.  
+Example content-types are provided, but disabled by default. To enable it add
+``collective.dynatree[at_example]`` and/or ``collective.dynatree[dx_example]``
+to both, the eggs and zcml section in your buildout. Rerun buildout, restart
+Plone and install the ``jquery.dynatree AT EXAMPLE Content Type`` and/or
+``jquery.dynatree DX EXAMPLE Content Type`` as an add-on product.
 
 Source Code and Contributions
 =============================
 
 If you want to help with the development (improvement, update, bug-fixing, ...)
-of ``collective.dynatree`` this is a great idea! 
+of ``collective.dynatree`` this is a great idea!
 
-The code is located in the 
+The code is located in the
 `github collective <https://github.com/collective/collective.dynatree>`_.
 
-You can clone it or `get access to the github-collective 
-<http://collective.github.com/>`_ and work directly on the project. 
+You can clone it or `get access to the github-collective
+<http://collective.github.com/>`_ and work directly on the project.
 
-Maintainers of collective.dynatree are Jens Klein and Peter Holzer. We 
-appreciate any contribution and if a release is needed to be done on pypi, 
+Maintainers of collective.dynatree are Jens Klein and Peter Holzer. We
+appreciate any contribution and if a release is needed to be done on pypi,
 please just contact one of us.
 
 Contributors
@@ -120,6 +157,8 @@ Contributors
 
 - Patrick Gerken provided initial idea+code with his package slc.treecategories
 
+- and much more, see change-log for details.
+
 Changes
 =======
 
@@ -127,8 +166,10 @@ Changes
 2.0 (Unreleased)
 ----------------
 
-- Fixes for z3cform widget, example types for dx, integration with fixed 
-  tree vocabularies of collective.vdexvocabulary and more polishing.
+- Bunch of fixes for z3cform widget, example types for dx, integration with
+  fixed tree vocabularies of ``collective.vdexvocabulary`` and more polishing.
+  Updated to latest ``jquery.dynatree``. Some renamings (attention, imports are
+  changing slightly).
   jensens, bennyboy, 2014-01-27
 
 - Add a z3c.form dynatree widget. jbeyers, thomas_w, jcbrand 2012-02-08
@@ -137,21 +178,21 @@ Changes
 1.3.4 (2011-03-31)
 ------------------
 
-- for some cases we need to explicit iterate over .keys() - thanks to Jess Hix 
+- for some cases we need to explicit iterate over .keys() - thanks to Jess Hix
   for the patch, jensens 2011-03-31
 
 ------------------
 1.3.3 (2011-03-14)
 ------------------
 
-- fixed JS bug with f****g IE. Ported solution used by hpeter at 
+- fixed JS bug with f****g IE. Ported solution used by hpeter at
   ``yafowil.widget.dynatree`` witha regexp instead of trim, jensens 2011-03-14
 
 ------------------
 1.3.2 (2011-03-08)
 ------------------
 
-- fixed bug: css-registry merges css, so paths to skin were no longer relative. 
+- fixed bug: css-registry merges css, so paths to skin were no longer relative.
   Adding the resource part helps here. jensens 2011-03-08
 
 ------------------
@@ -160,7 +201,7 @@ Changes
 
 - fixed bug: ``required`` on multi-selection did not work. jensens 2011-02-18
 
-- added ``showKey`` property to at-widget to show terms key in front of the 
+- added ``showKey`` property to at-widget to show terms key in front of the
   value. hpeter, jensens, 2010-01-18
 
 ----------------
@@ -193,7 +234,7 @@ Changes
 - add MANIFEST.in, so ``*.rst`` gets included in the egg.
   jensens, 2010-11-29
 
-- make dict2dynatree more robust after report by Rigel Di Scala, 
+- make dict2dynatree more robust after report by Rigel Di Scala,
   jensens, 2010-11-29
 
 ----------------
