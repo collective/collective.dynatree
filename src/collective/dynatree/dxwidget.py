@@ -93,7 +93,7 @@ class DynatreeWidget(SequenceWidget):
                     return default
         else:
             try:
-                self.terms.getTermByToken(token)
+                self.terms.getTermByToken(value)
             except LookupError:
                 return default
         return value
