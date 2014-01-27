@@ -1,7 +1,7 @@
+from collective.dynatree.dxwidget import DynatreeWidget
 from plone.supermodel import model
 from plone.autoform.directives import widget
 from plone.autoform.interfaces import IFormFieldProvider
-from collective.dynatree.dxwidget import DynatreeWidget
 from zope import schema
 from zope.interface import provider
 
@@ -10,9 +10,8 @@ from zope.interface import provider
 class IDynatreeExampleBehavior(model.Schema):
 
     widget(
-        'multiple_leafs',
+        'single_leafs',
         DynatreeWidget,
-        selectMode=2
     )
     single_leafs = schema.Choice(
         title=u"Singe Leafs",
@@ -21,7 +20,7 @@ class IDynatreeExampleBehavior(model.Schema):
     )
 
     widget(
-        'single_leafs',
+        'multiple_leafs',
         DynatreeWidget,
         selectMode=2
     )

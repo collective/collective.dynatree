@@ -90,6 +90,7 @@ class DynatreeWidget(SequenceWidget):
                 try:
                     self.terms.getTermByToken(token)
                 except LookupError:
+                    # XXX TODO remove value from list instead of skipping all
                     return default
         else:
             try:
