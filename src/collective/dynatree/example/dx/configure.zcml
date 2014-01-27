@@ -14,7 +14,7 @@
   	<include package="Products.GenericSetup" file="meta.zcml" />
     <genericsetup:registerProfile
     	name="default"
-     	title="jquery.dynatree DX EXAMPLE Content Types "
+     	title="jquery.dynatree DX EXAMPLE Content Type "
      	directory="profile"
      	description="provides example types for dexterity widget"
      	provides="Products.GenericSetup.interfaces.EXTENSION"
