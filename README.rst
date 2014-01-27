@@ -124,8 +124,12 @@ Changes
 =======
 
 ----------------
-1.4 (Unreleased)
+2.0 (Unreleased)
 ----------------
+
+- Fixes for z3cform widget, example types for dx, integration with fixed 
+  tree vocabularies of collective.vdexvocabulary and more polishing.
+  jensens, bennyboy, 2014-01-27
 
 - Add a z3c.form dynatree widget. jbeyers, thomas_w, jcbrand 2012-02-08
 
