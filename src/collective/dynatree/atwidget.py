@@ -1,3 +1,4 @@
+from AccessControl import ClassSecurityInfo
 from Products.Archetypes.Registry import registerWidget
 from Products.Archetypes.Widget import TypesWidget
 from Products.Five.browser import BrowserView
