@@ -5,16 +5,16 @@ from plone.dexterity.interfaces import IDexterityFTI
 from Products.Five.browser import BrowserView
 from utils import dict2dynatree
 from z3c.form.widget import SequenceWidget
-from z3c.json.converter import JSONWriter
-
 from zope.dottedname.resolve import resolve
 from zope.schema.interfaces import IList
 from zope.schema.interfaces import IVocabularyFactory
 
 import interfaces
+import json
 import z3c.form
 import zope.component
 import zope.interface
+
 
 class FieldVocabDynatreeJsonView(BrowserView):
 
@@ -45,7 +45,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
             True,
             False
         )
-        return JSONWriter().write(tree)
+        return json.dumps(tree)
 
 
 class DynatreeWidget(SequenceWidget):

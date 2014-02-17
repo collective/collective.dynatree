@@ -1,10 +1,11 @@
-from z3c.json.converter import JSONWriter
-from AccessControl import ClassSecurityInfo
-from Products.Five.browser import BrowserView
-from Products.Archetypes.Widget import TypesWidget
 from Products.Archetypes.Registry import registerWidget
+from Products.Archetypes.Widget import TypesWidget
+from Products.Five.browser import BrowserView
 from utils import dict2dynatree
 from utils import lookupVocabulary
+
+import json
+
 
 class DynatreeWidgetMacros(BrowserView):
     """
@@ -22,7 +23,7 @@ class ATFieldVocabDynatreeJsonView(BrowserView):
         field = self.context.Schema()[fieldname]
         tree = lookupVocabulary(self.context, field)
         selected = self.request.get('selected', '').split('|')
-        return JSONWriter().write(
+        return json.dumps(
             dict2dynatree(
                 self.context,
                 tree,

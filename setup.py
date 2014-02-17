@@ -36,7 +36,6 @@ setup(name='collective.dynatree',
           'plone.behavior',
           'collective.js.jqueryui',
           'collective.js.backbone',
-          'z3c.json',
       ],
       extras_require=dict(
           at_example=['Products.ATVocabularyManager'],
