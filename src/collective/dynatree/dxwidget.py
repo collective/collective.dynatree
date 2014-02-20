@@ -1,14 +1,12 @@
 from Acquisition import aq_inner
-from plone.autoform.interfaces import IFormFieldProvider
-from plone.behavior.interfaces import IBehaviorAssignable
-from plone.dexterity.interfaces import IDexterityFTI
 from Products.Five.browser import BrowserView
+from plone.dexterity.interfaces import IDexterityFTI
 from utils import dict2dynatree
 from z3c.form.widget import SequenceWidget
 from zope.dottedname.resolve import resolve
+from zope.schema import TextLine
 from zope.schema.interfaces import IList
 from zope.schema.interfaces import IVocabularyFactory
-
 import interfaces
 import json
 import z3c.form
@@ -71,7 +69,8 @@ class DynatreeWidget(SequenceWidget):
         except AttributeError:
             value = []
         # end of workaround XXX
-        value = '|'.join([_ for _ in value])
+        if isinstance(value, (list, tuple)):
+            value = '|'.join([_ for _ in value])
         return self.request.get(self.__name__, value)
 
     def extract(self, default=z3c.form.interfaces.NO_VALUE):
@@ -83,19 +82,14 @@ class DynatreeWidget(SequenceWidget):
             raise ValueError('Expected string, got %s' % type(value))
         if value == default:
             return value
-        if IList.providedBy(self.field):
-            value = value.split('|')
-            # do some kind of validation, at least only use existing values
-            for token in value:
-                try:
-                    self.terms.getTermByToken(token)
-                except LookupError:
-                    # XXX TODO remove value from list instead of skipping all
-                    return default
-        else:
+        value = value.split('|')
+        for token in value:
+            if token == self.noValueToken:
+                continue
             try:
-                self.terms.getTermByToken(value)
+                self.terms.getTermByToken(token)
             except LookupError:
+                # XXX TODO remove value from list instead of skipping all
                 return default
         return value
 
@@ -116,7 +110,7 @@ class DynatreeWidget(SequenceWidget):
         return '/'.join(result)
 
 
-@zope.component.adapter(zope.schema.TextLine, z3c.form.interfaces.IFormLayer)
+@zope.component.adapter(TextLine, z3c.form.interfaces.IFormLayer)
 @zope.interface.implementer(z3c.form.interfaces.IFieldWidget)
 def DynatreeFieldWidget(field, request):
     """ IFieldWidget factory for DynatreeWidget
