@@ -36,11 +36,13 @@ class FieldVocabDynatreeJsonView(BrowserView):
             vname = field.vocabularyName
         factory = zope.component.getUtility(IVocabularyFactory, vname)
         tree = factory(context)
+        leafsOnly = getattr(tree, 'leafsOnly', True)
+        
         tree = dict2dynatree(
             self.context,
             tree,
             [],  # selected not needed here, this is done at js side
-            True,
+            leafsOnly,
             False
         )
         return json.dumps(tree)
@@ -55,8 +57,8 @@ class DynatreeWidget(SequenceWidget):
     selectMode = 1
     minExpandLevel = 1
     autoCollapse = False
-    leafsOnly = True
-    showKey = False
+    leafsOnly = True # Not used
+    showKey = False # Not used
 
     @property
     def item_value(self):
