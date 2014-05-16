@@ -53,6 +53,20 @@
         template="dxwidget.pt" 
         />
 
+    <z3c:widgetTemplate
+        mode="display"
+        widget=".interfaces.IDynatreeWidget"        
+        layer="z3c.form.interfaces.IFormLayer"
+        template="dxwidget.pt" 
+        />
+
+    <z3c:widgetTemplate
+        mode="hidden"
+        widget=".interfaces.IDynatreeWidget"        
+        layer="z3c.form.interfaces.IFormLayer"
+        template="dxwidget.pt" 
+        />
+	
     <browser:page
         for="*"
         name="widget_dynatree_json"

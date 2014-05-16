@@ -1,4 +1,6 @@
 <div class="dynatree-atwidget">
+
+  <tal:inputmode condition="python:view.mode == 'input'">
     <div class="collective-dynatree-tree">Loading tree here...</div>
     <div class="dynatree_ajax_vocabulary hiddenStructure"
          tal:define="portal_type python:view.portal_type"
@@ -11,4 +13,27 @@
                            id view/field_name;
                            value python:view.widget_value;"
            />
+    </tal:inputmode>
+    
+    <tal:displaymode condition="python:view.mode == 'display'">
+        <div tal:attributes="id string:parent-fieldname-${view/field_name}"
+	     tal:define="value view/display_value;
+			 isStringField python:isinstance(value, basestring);">
+	    <tal:isString tal:condition="isStringField">
+		<span tal:content="python:value"></span>
+	    </tal:isString>
+	    <tal:isLines tal:condition="not:isStringField" >
+		<ul tal:repeat="item python:value" >
+		    <li><span tal:replace="item">string</span></li>
+		</ul>
+	    </tal:isLines>
+        </div>
+    </tal:displaymode>
+
+    <tal:displaymode condition="python:view.mode == 'hidden'">
+        <div tal:attributes="id string:parent-fieldname-${view/field_name}">
+	     <input type="hidden" tal:attributes="value view/widget_value; name view/field_name"/>
+        </div>
+    </tal:displaymode>
+
 </div>

@@ -59,19 +59,33 @@ class DynatreeWidget(SequenceWidget):
     showKey = False
 
     @property
-    def widget_value(self):
+    def item_value(self):
         # XXX figure out where to get actual value from, workaround follows:
         # imo this should be self.value, but this is None. Reason?
         # anyway needs refactoring
         # also look if this method shall be named displayValue (z3cform style)
         try:
-            value = self.field.get(self.context) or []
+            return self.field.get(self.context) or []
         except AttributeError:
-            value = []
-        # end of workaround XXX
-        if isinstance(value, (list, tuple)):
+            return []
+
+    @property
+    def widget_value(self):
+        # Returns the value in a form useful for the edit widget, ie with
+        # items separated by |
+        value = self.item_value
+        if not isinstance(value, basestring):
             value = '|'.join([_ for _ in value])
         return self.request.get(self.__name__, value)
+    
+    @property
+    def display_value(self):
+        # Returns the title of all values if the field is a string, or a list of titles otherwise.
+        value = self.item_value
+        if isinstance(value, basestring):
+            return self.terms.getTermByToken(token).title
+            
+        return sorted([self.terms.getTermByToken(token).title for token in value])
 
     def extract(self, default=z3c.form.interfaces.NO_VALUE):
         """See z3c.form.interfaces.IWidget."""
