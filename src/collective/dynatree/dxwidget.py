@@ -107,6 +107,7 @@ class DynatreeWidget(SequenceWidget):
                                     'minExpandLevel',
                                     'autoCollapse']]
         result.append('title,%s' % self.label)
+        result = [r.replace('/', '&#47;') for r in result]
         return '/'.join(result)
 
 

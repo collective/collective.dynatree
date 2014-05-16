@@ -61,6 +61,7 @@ class DynatreeWidget(TypesWidget):
                   for _ in ['selectMode', 'minExpandLevel', 'rootVisible',
                             'autoCollapse', 'sparse', 'flatlist']]
         result.append('title,%s' % self.label)
+        result = [r.replace('/', '&#47;') for r in result]
         return '/'.join(result)
 
     security.declarePublic('dynatreeValue')
