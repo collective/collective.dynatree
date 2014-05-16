@@ -35,7 +35,7 @@ Dexterity/ z3c.form Widget
 --------------------------
 
 The widget is meant to be used on a ``Choice`` (single selection) or on a
-``List`` (multi selection).
+``List`` or ``Set`` (multi selection).
 
 Example dexterity behavior::
 

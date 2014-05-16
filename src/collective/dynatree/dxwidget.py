@@ -5,7 +5,7 @@ from utils import dict2dynatree
 from z3c.form.widget import SequenceWidget
 from zope.dottedname.resolve import resolve
 from zope.schema import TextLine
-from zope.schema.interfaces import IList
+from zope.schema.interfaces import IList, ISet
 from zope.schema.interfaces import IVocabularyFactory
 import interfaces
 import json
@@ -30,7 +30,7 @@ class FieldVocabDynatreeJsonView(BrowserView):
                 field = behavior.get(fieldname.split('.')[1])
                 if field is not None:
                     break
-        if IList.providedBy(field):
+        if IList.providedBy(field) or ISet.providedBy(field):
             vname = field.value_type.vocabularyName
         else:
             vname = field.vocabularyName
