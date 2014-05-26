@@ -23,17 +23,17 @@
 		<span tal:content="python:value"></span>
 	    </tal:isString>
 	    <tal:isLines tal:condition="not:isStringField" >
-		<ul tal:repeat="item python:value" >
-		    <li><span tal:replace="item">string</span></li>
+		<ul>
+		    <li tal:repeat="item python:value"><span tal:replace="item">string</span></li>
 		</ul>
 	    </tal:isLines>
         </div>
     </tal:displaymode>
 
-    <tal:displaymode condition="python:view.mode == 'hidden'">
+    <tal:hiddenmode condition="python:view.mode == 'hidden'">
         <div tal:attributes="id string:parent-fieldname-${view/field_name}">
 	     <input type="hidden" tal:attributes="value view/widget_value; name view/field_name"/>
         </div>
-    </tal:displaymode>
+    </tal:hiddenmode>
 
 </div>
