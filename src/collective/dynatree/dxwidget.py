@@ -60,6 +60,12 @@ class DynatreeWidget(SequenceWidget):
     leafsOnly = True # Not used
     showKey = False # Not used
 
+    def _get_term(self, token):
+        try:
+            return self.terms.getTermByToken(token)
+        except LookupError:
+            return None
+            
     @property
     def item_value(self):
         # XXX figure out where to get actual value from, workaround follows:
@@ -85,9 +91,13 @@ class DynatreeWidget(SequenceWidget):
         # Returns the title of all values if the field is a string, or a list of titles otherwise.
         value = self.item_value
         if isinstance(value, basestring):
-            return self.terms.getTermByToken(token).title
+            term = self.terms.getTermByToken(token)
+            if term is None:
+                return ''
+            return term.title
             
-        return sorted([self.terms.getTermByToken(token).title for token in value])
+        terms = [self._get_term(token) for token in value]
+        return sorted(term.title for term in terms if term is not None)
 
     def extract(self, default=z3c.form.interfaces.NO_VALUE):
         """See z3c.form.interfaces.IWidget."""
