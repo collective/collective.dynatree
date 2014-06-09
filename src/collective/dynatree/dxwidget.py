@@ -86,18 +86,25 @@ class DynatreeWidget(SequenceWidget):
             value = '|'.join([_ for _ in value])
         return self.request.get(self.__name__, value)
     
+    def term_display_value(self, term):
+        if term is None:
+            return ''
+        parent = getattr(term, '__parent__', None)
+        if parent:
+            parent_title = self.term_display_value(parent)
+            return '%s / %s' % (parent_title, term.title)
+        return term.title
+        
     @property
     def display_value(self):
         # Returns the title of all values if the field is a string, or a list of titles otherwise.
         value = self.item_value
         if isinstance(value, basestring):
-            term = self.terms.getTermByToken(token)
-            if term is None:
-                return ''
-            return term.title
+            term = self._get_term(value)
+            return self.term_display_value(term)
             
         terms = [self._get_term(token) for token in value]
-        return sorted(term.title for term in terms if term is not None)
+        return sorted(self.term_display_value(term) for term in terms)
 
     def extract(self, default=z3c.form.interfaces.NO_VALUE):
         """See z3c.form.interfaces.IWidget."""
