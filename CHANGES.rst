@@ -2,7 +2,7 @@ Changes
 =======
 
 ----------------
-2.0 (Unreleased)
+2.0 (2014-10-30)
 ----------------
 
 - Several enhancements and minor bug fixes.
